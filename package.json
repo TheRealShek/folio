@@ -1,0 +1,22 @@
+{
+  "name": "folio",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "bun@1.3.13",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.4",
+    "@fontsource/inter": "^5.2.6",
+    "@fontsource/merriweather": "^5.2.7",
+    "@fontsource/playfair-display": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.13.5",
+    "tailwindcss": "^4.1.12"
+  }
+}

@@ -1,0 +1,44 @@
+---
+import { getCharacterName, getCharacterSlug } from "../utils/characters";
+
+interface CharacterLink {
+  id: string;
+  body: string;
+  data: {
+    name?: string;
+  };
+}
+
+interface Props {
+  prev?: CharacterLink;
+  next?: CharacterLink;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<nav class="grid gap-6 py-8 md:grid-cols-2">
+  <div>
+    {prev && (
+      <a
+        href={`/characters/${getCharacterSlug(prev)}/`}
+        class="inline-flex min-h-11 items-center text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
+        style="font-family: var(--font-ui);"
+      >
+        ← {getCharacterName(prev)}
+      </a>
+    )}
+  </div>
+
+  <div class="md:text-right">
+    {next && (
+      <a
+        href={`/characters/${getCharacterSlug(next)}/`}
+        class="inline-flex min-h-11 items-center text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
+        style="font-family: var(--font-ui);"
+      >
+        {getCharacterName(next)} →
+      </a>
+    )}
+  </div>
+</nav>

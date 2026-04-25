@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CharacterCard from "../components/CharacterCard.astro";
+import { getCharacterName, getCharacterSlug } from "../utils/characters";
+
+const characters = (await getCollection("characters")).sort((a, b) =>
+  getCharacterName(a).localeCompare(getCharacterName(b))
+);
+
+const types = [...new Set(characters.map((character) => character.data.type).filter(Boolean))].sort() as string[];
+const showFilters = types.length > 1;
+const filters = ["all", ...types];
+---
+
+<BaseLayout title="Folio" description="Personal character analysis and long-form reading.">
+  <section class="mx-auto max-w-6xl px-6 pb-16 pt-10 lg:px-8 lg:pt-14">
+    {showFilters && (
+      <div class="filter-scrollbar -mx-6 mb-10 overflow-x-auto px-6">
+        <div
+          class="flex min-w-max gap-6 border-b border-[var(--divider)]"
+          aria-label="Character type filters"
+        >
+          {filters.map((filter, index) => (
+            <button
+              type="button"
+              class:list={[
+                "filter-tab border-b pb-3 pt-1 text-sm uppercase tracking-[0.18em] transition-colors duration-200",
+                index === 0
+                  ? "border-[var(--accent)] text-[var(--text-primary)]"
+                  : "border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+              ]}
+              data-filter={filter}
+              style="font-family: var(--font-ui);"
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {characters.map((character) => (
+        <div data-character-type={character.data.type ?? "all"}>
+          <CharacterCard
+            href={`/characters/${getCharacterSlug(character)}/`}
+            name={getCharacterName(character)}
+            series={character.data.series}
+            rating={character.data.rating}
+            cover={character.data.cover}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {showFilters && (
+    <script is:inline>
+      const setupCharacterFilters = () => {
+        const tabs = Array.from(document.querySelectorAll(".filter-tab"));
+        const cards = Array.from(document.querySelectorAll("[data-character-type]"));
+
+        if (!tabs.length || !cards.length) {
+          return;
+        }
+
+        const applyFilter = (activeFilter) => {
+          tabs.forEach((tab) => {
+            const isActive = tab.dataset.filter === activeFilter;
+            tab.classList.toggle("border-[var(--accent)]", isActive);
+            tab.classList.toggle("text-[var(--text-primary)]", isActive);
+            tab.classList.toggle("border-transparent", !isActive);
+            tab.classList.toggle("text-[var(--text-muted)]", !isActive);
+          });
+
+          cards.forEach((card) => {
+            const matches =
+              activeFilter === "all" || card.dataset.characterType === activeFilter;
+
+            card.toggleAttribute("hidden", !matches);
+          });
+        };
+
+        applyFilter("all");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => applyFilter(tab.dataset.filter ?? "all"));
+        });
+      };
+
+      setupCharacterFilters();
+      document.addEventListener("astro:page-load", setupCharacterFilters);
+    </script>
+  )}
+</BaseLayout>

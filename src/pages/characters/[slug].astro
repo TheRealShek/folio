@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from "astro:content";
+import CharacterLayout from "../../layouts/CharacterLayout.astro";
+import {
+  getCharacterDescription,
+  getCharacterName,
+  getCharacterSlug
+} from "../../utils/characters";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("characters")).sort((a, b) =>
+    getCharacterName(a).localeCompare(getCharacterName(b))
+  );
+
+  return entries.map((entry, index) => ({
+    params: { slug: getCharacterSlug(entry) },
+    props: {
+      entry,
+      prev: index > 0 ? entries[index - 1] : undefined,
+      next: index < entries.length - 1 ? entries[index + 1] : undefined
+    }
+  }));
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const name = getCharacterName(entry);
+const description = getCharacterDescription(entry);
+---
+
+<CharacterLayout
+  title={`${name} · Folio`}
+  description={description}
+  name={name}
+  series={entry.data.series}
+  rating={entry.data.rating}
+  tags={entry.data.tags}
+  cover={entry.data.cover}
+  spoilers={entry.data.spoilers}
+  prev={prev}
+  next={next}
+>
+  <Content />
+</CharacterLayout>

@@ -1,0 +1,47 @@
+{
+  "$ref": "#/definitions/characters",
+  "definitions": {
+    "characters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "anime",
+            "manga",
+            "comics",
+            "game"
+          ]
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cover": {
+          "type": "string"
+        },
+        "spoilers": {
+          "type": "boolean"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
