@@ -1,0 +1,240 @@
+# Charlie Munger — Error Eliminator, Not Genius Hunter
+
+---
+
+### 1. Core Objective
+
+Munger's whole system solves one problem: human cognition is buggy by default, and most people never fix their bugs. Every model he built, every checklist he ran, every discipline he read — all of it was aimed at the same thing. Not being smarter than the next person. Being *less wrong* than them, consistently, over decades. The insight underneath that is uncomfortable: most high-stakes failures aren't caused by lack of intelligence. They're caused by predictable, catalogued, well-documented mental misfires that nobody bothered to learn. Munger's architecture is a patch system for a brain running factory firmware.
+
+---
+
+### 2. Key Mental Models
+
+---
+
+**Name:** Inversion
+
+**Definition:** Approach a problem by first asking what conditions would guarantee failure, then design to avoid those conditions rather than directly pursue success.
+
+**Mechanism:** Forward-thinking is optimism-biased by default. When you plan toward success, your brain filters out disconfirming signals because they threaten the goal you're already committed to. Inversion forces you to construct the failure case without any ego stake in it — you're not defending a plan, you're diagnosing a corpse. This matters because avoiding a -100% outcome is mathematically more valuable than capturing a +50% one. The asymmetry is real: recoverable mistakes compound slowly, catastrophic ones end the game. Inversion finds the catastrophic ones first.
+
+**Example:** Picture a senior engineer who was handed a rewrite of a core payments service. Before touching architecture diagrams, she wrote out ten ways the migration could end careers — silent data corruption, a rollback path that didn't exist, a cutover window that assumed zero traffic during a sale period. None of that came from optimism about the new design. It came from asking, bluntly, what gets people fired. She caught the rollback gap three weeks before go-live. Nobody would have looked for it otherwise.
+
+**Failure Case:** Inversion bias-toward-negative degrades into analysis paralysis when someone generates an exhaustive failure list and treats it as a reason to never decide. The model only works if failure conditions are *ranked* and the truly catastrophic ones are avoided while acceptable risks are accepted. Munger himself noted he still underestimated incentive-caused failures every single year despite knowing the model cold — which means fluency with the model doesn't confer immunity.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em;">
+FORWARD MODE                INVERSION MODE
+────────────────            ──────────────────
+"How do we win?"     →      "How do we lose?"
+Plan for success     →      Map failure conditions
+Optimize upside      →      Eliminate catastrophic tail
+Build toward goal    →      Remove blockers to survival
+
+    [goal]                     [failure map]
+      ↑                           ↓
+[current state]            [what kills us?]
+                                  ↓
+                          [remove those paths]
+                                  ↓
+                          [what remains = safe zone]
+</pre>
+
+---
+
+**Name:** Latticework of Mental Models
+
+**Definition:** Build decisions on a framework of cross-discipline models rather than one specialty lens. No model is sufficient alone. Models from multiple fields applied simultaneously produce insights no single-discipline expert can reach.
+
+**Mechanism:** Every academic discipline built its models to solve problems *within* that discipline. A finance model doesn't include evolutionary psychology. A psychology model doesn't include thermodynamics. Real situations don't respect disciplinary fences — a business failure might be caused simultaneously by incentive misalignment (psychology), network effects (math), and mean reversion (statistics). A person with only one model will force every problem into its shape. Munger's phrase: to a man with a hammer, everything looks like a nail. Adding more models means more of reality becomes legible. The compounding effect is non-linear: 10 models don't give you 10x better thinking, they give you combinatorial coverage.
+
+**Example:** When Munger looked at Coca-Cola in the late 1980s, he didn't run a DCF and stop. He thought through brand psychology (people don't buy cola, they buy a feeling they've been conditioned to want since childhood), network effects (more distribution makes more distribution cheaper), geography as moat (the syrup recipe travels, but local bottling relationships don't), and the thermodynamics of caloric need (people need liquid daily in every climate forever). No single lens explains why that business is worth owning at 30x earnings. The combination does.
+
+**Failure Case:** The model breaks down when someone collects frameworks as status symbols rather than decision tools. Munger called this "physics envy" — the desire to reduce complex adaptive systems to a clean formula. Knowing 40 named models without knowing *when* to deploy each one, or knowing you're in a situation where no good model applies, is worse than knowing three models well. The latticework must be built from genuine understanding of each discipline's *causal* logic, not surface vocabulary.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em;">
+SINGLE-MODEL THINKER          LATTICEWORK THINKER
+─────────────────────         ────────────────────
+    [situation]                   [situation]
+         ↓                              ↓
+   [one lens]              [psych] [math] [physics]
+         ↓                    [econ] [biology] ...
+  [distorted view]                    ↓
+                           [overlapping coverage]
+                                      ↓
+                            [higher-res picture]
+                            [novel intersections]
+</pre>
+
+---
+
+**Name:** Incentive-Caused Bias
+
+**Definition:** People come to believe whatever it is in their financial or professional interest to believe. Incentive structures produce predictable cognitive distortions, regardless of the person's intelligence or integrity.
+
+**Mechanism:** The brain doesn't separate "what is true" from "what I benefit from being true." When a person's salary, status, or survival depends on a belief, their reasoning process quietly optimizes for defending that belief rather than testing it. This isn't conscious dishonesty — it's how reward systems wire cognition over time. The mechanism runs in both directions: people overestimate value they produce and underestimate problems they caused. In organizations, this compounds when everyone is similarly incentivized — no one has a stake in finding the problem, so the problem grows until it can't be hidden. Munger: "Never, ever think about something else when you should be thinking about the power of incentives."
+
+**Example:** The Wells Fargo fake-accounts scandal reads like a textbook case. Branch managers were scored on account openings. Nobody was scored on account *quality* or *usage*. So staff opened accounts that didn't exist, and kept doing it because every incentive in the system rewarded the behavior, and none punished it until regulators arrived. The people doing it weren't uniquely bad actors. They were ordinary people responding rationally to a broken incentive structure. This is what Munger meant when he said incentive-caused bias is "ungodly important."
+
+**Failure Case:** This model fails when applied to yourself without discipline. Knowing that incentive-caused bias exists doesn't protect you from it — Munger admitted this explicitly about his own blind spots, saying he underestimated incentive effects every year of his life. The model has to be applied *structurally* (redesign the incentive system) rather than just *diagnostically* (note that incentive bias is present). Diagnosing it in others while trusting your own reasoning to be immune is itself an instance of the bias.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em;">
+Incentive       Belief         Behavior       Outcome
+──────────      ──────────     ──────────     ──────────
+"I get paid →  "This is    →  Defend      →  Distorted
+ if X is        probably       the            decision
+ true"          true"          belief         output
+
+Key: distortion happens at [Belief], not [Behavior]
+     intelligence doesn't fix the upstream corruption
+</pre>
+
+---
+
+**Name:** Lollapalooza Effect
+
+**Definition:** When multiple biases or incentives fire simultaneously in the same direction, their combined force is not additive — it is multiplicative and often produces extreme, irrational outcomes.
+
+**Mechanism:** Individual cognitive biases have been catalogued exhaustively in academic psychology. What academic psychology failed to study (because the experiments became too complex to publish) is what happens when several biases activate at once and point the same direction. Each bias amplifies the others: social proof makes a behavior seem normal, while commitment bias locks it in, while incentive bias makes questioning it feel costly, while authority bias silences objectors. The system doesn't just nudge — it catapults. This is why intelligent people get swept into obviously bad outcomes: no single bias would have done it, but five simultaneous ones overwhelm even sophisticated defenses.
+
+**Example:** The 2021 GameStop squeeze is a clear run of it. Reddit social proof made buying feel like group membership. Short-squeeze mechanics created artificial scarcity. Robinhood's gamification rewarded trading activity directly. Celebrities staked public credibility on the trade, which kicked in authority bias. People who posted their positions couldn't back down without admitting they were wrong in public. Every one of those forces pushed in the same direction. The stock hit $325. Bloomberg tracked six simultaneous behavioral triggers. Nobody was running a valuation model.
+
+**Failure Case:** The model fails as a *prediction tool* because lollapalooza events are only clearly visible in hindsight. Recognizing that "multiple biases are operating" doesn't tell you *when* the unstable equilibrium collapses, only that it will. Munger used it defensively (exit before the convergence) rather than predictively (time the collapse). Using it to call market tops is not what it was built for.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em;">
+SINGLE BIAS             LOLLAPALOOZA
+───────────             ─────────────────────────────
+[bias A]        vs.     [bias A] ──┐
+  ↓                     [bias B] ──┼──→ [extreme outcome]
+[small nudge]           [bias C] ──┘       ↑
+                        [bias D] ──────────┘
+
+                        forces same direction
+                        amplify each other
+                        overwhelm rational check
+</pre>
+
+---
+
+**Name:** Circle of Competence
+
+**Definition:** Every person has a domain where they genuinely understand the causal mechanisms at work. Decisions made inside that domain can be trusted. Decisions made outside it are essentially guesses, regardless of how confident they feel.
+
+**Mechanism:** Competence is not familiarity. You can follow an industry for a decade and still not understand *why* it works the way it does. True competence means you can predict second-order effects, identify which variables actually drive outcomes, and know in advance which signals matter. The mechanism: outside your circle, you don't know what you don't know — so you feel more confident than inside it, where you can see your own uncertainty clearly. This is why Munger said "if you have competence, you know its boundaries already." Shrinking the decision space to where you have genuine causal understanding eliminates entire categories of catastrophic error.
+
+**Example:** Munger and Buffett passed on most of the 1990s tech boom. They put Microsoft, Amazon, Google — many of them — in the "too hard" pile and moved on. At the time, this looked like old-man conservatism. But their stated reason wasn't ignorance of the internet. It was that they couldn't model which companies would survive competitive destruction in an industry they didn't deeply understand. Being wrong about the internet in 1999 cost you your capital. Being right cost you nothing except upside you never owned. The BYD investment in China was the explicit exception — Munger pushed for it, partly because he wanted to, and partly because electric vehicles were further from core Berkshire competence than anything they'd previously held.
+
+**Failure Case:** The model fails through *boundary drift* — the circle expands in the person's mind faster than their understanding actually grows. Munger's mistake with BYD is a live example he acknowledged: the investment worked, but it stretched into unfamiliar territory partly because it was "fun." The model doesn't self-enforce. Comfort with the *vocabulary* of a new domain fakes the feeling of competence long before the actual causal understanding exists.
+
+---
+
+**Name:** Avoiding Stupidity Over Seeking Brilliance
+
+**Definition:** Systematic elimination of predictable errors produces better long-run outcomes than pursuing insight or intelligence. Not-stupid compounds faster than smart.
+
+**Mechanism:** Smart decisions have diminishing returns — there's a ceiling on how right you can be. Stupid decisions have no floor — there's no limit to how wrong you can get, and some errors are unrecoverable. In a compounding system (investments, career, relationships), survivorship is the prerequisite for everything else. One catastrophic mistake that ends the game erases all prior good decisions. Munger's operating logic was to build a checklist of known failure modes and avoid them systematically, which is a more reliable process than generating brilliant insights. Insight is non-reproducible. A checklist runs every time.
+
+**Example:** Munger and Buffett's pass on LTCM rescue is a useful case. The fund was run by some of the most decorated mathematicians and economists alive. Munger's reaction wasn't to analyze whether the models were correct. It was that the leverage ratios meant a single tail event could wipe everything out, and he didn't need to evaluate the strategy — he just needed to notice that one thing. The fund collapsed exactly that way. The question he asked wasn't "is this brilliant?" It was "what kills this?" That's a much shorter conversation.
+
+**Failure Case:** The model degrades into excessive caution when the "not stupid" filter becomes indistinguishable from "never act under uncertainty." Munger's investment partnership generated 19.8% CAGR from 1962–1975 — that's not a passive strategy. Avoiding stupidity is the floor, not the ceiling. The failure mode is mistaking risk avoidance for risk-aversion so extreme that no good bets are taken.
+
+---
+
+### 3. Decision Framework
+
+A step-by-step system derived directly from Munger's documented approach. Run any significant decision through these steps in order.
+
+**Step 1 — Invert first.**
+Before analyzing merit, ask: what conditions guarantee this fails? List them. Rank by severity. Identify which failures are unrecoverable. If any unrecoverable condition is plausible under normal variance, stop here.
+
+**Step 2 — Check circle of competence.**
+Can you state, in plain terms, the mechanism by which this decision produces the outcome you expect? Not the story — the mechanism. If you cannot name the causal chain, you are outside your circle. Mark the decision as speculative and apply much smaller stakes.
+
+**Step 3 — Audit incentive structure.**
+Who benefits from you believing this is a good decision? What do they gain if you proceed? If the entity recommending the action has an incentive tied to your compliance, treat their reasoning as structurally biased regardless of their intelligence or integrity.
+
+**Step 4 — Scan for lollapalooza conditions.**
+Count how many biases are currently pushing you toward the decision: social proof (others are doing it), authority (an expert endorses it), scarcity (limited time/supply), commitment (you've already told people), incentive alignment (someone profits from your yes). Three or more in the same direction = stop and wait. The combined pressure is not evidence of correctness.
+
+**Step 5 — Apply the latticework.**
+What would a psychologist say about this situation? What would a statistician say? An engineer? What does basic microeconomics say about the incentive structure? Each lens that produces the same conclusion strengthens conviction. Lenses that disagree identify where your model is incomplete.
+
+**Step 6 — Make the call, document the reasoning.**
+Commit and record *why*. Not the outcome you expect — the causal logic you believe. This forces clarity and creates a feedback loop when you review decisions later. Munger's edge was not just learning from mistakes, but building a system that *produced* correctable mistakes instead of uncorrectable ones.
+
+---
+
+### 4. Pattern Recognition
+
+Signals that indicate which model is active in a given situation.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em;">
+CONDITION                                  → ACTIVE MODEL
+──────────────────────────────────────────────────────────────────
+Everyone agrees, urgency is high           → Lollapalooza (exit/wait)
+Advisor benefits from your yes             → Incentive-Caused Bias
+"I know this industry well"                → Circle of Competence check
+Optimism feels natural and obvious         → Inversion (run it)
+Decision has no clear causal mechanism     → Outside circle of competence
+Single model produces clean answer         → Latticework (apply more lenses)
+Risk feels small but outcome is permanent  → Inversion (catastrophic tail)
+Peers all hold the same position           → Lollapalooza + social proof
+Smart people built this and it failed      → Incentive misalignment first
+Tempted to act because it's exciting       → Circle of competence drift
+</pre>
+
+---
+
+### 5. Leverage Points
+
+**Where these models produce disproportionate output:**
+
+*Hiring and organizational design.*
+Incentive-caused bias is most powerful in org design because it operates silently at scale. Getting incentives right early in a company's structure is a second-order lever: it shapes every subsequent decision made by every person in the system. Getting it wrong creates a self-reinforcing error culture that is almost impossible to debug because everyone inside it is rewarded for not seeing the problem.
+
+*The first decision in a new domain.*
+Circle of competence matters most when you first enter unfamiliar territory. The feeling of competence arrives fast — vocabulary, surface patterns, and narrative familiarity all feel like understanding. The actual causal model takes years. The leverage point is applying *extra* skepticism to your own confidence in the first 12–18 months in a domain, when the gap between perceived and actual competence is widest.
+
+*High-conviction moments in markets or organizations.*
+The lollapalooza effect reaches its leverage point not when it's building, but just before the reversal. Prices that look "obvious" based on narrative consensus, where skeptics are dismissed and everyone's thesis is the same — that's peak lollapalooza. Exiting or staying flat during those windows doesn't look smart in the short run. Downstream, it's the difference between surviving and not.
+
+*Second-order effects when applied incorrectly:*
+Inversion misused produces institutional paralysis — organizations that can map every failure mode but cannot authorize any action. Latticework misused produces "model theater" — deploying named frameworks to justify a conclusion already reached. Both are harder to diagnose than ordinary errors because they carry the vocabulary of rigor while producing its opposite.
+
+---
+
+### 6. Systems Application
+
+---
+
+**Backend / Distributed Systems Analogy**
+
+Munger's models map directly onto systems engineering concepts, not metaphorically — the structural logic is the same.
+
+*Inversion = Pre-mortem + failure mode analysis.*
+Before shipping a service, you run chaos engineering and fault injection not to make the system faster, but to surface unrecoverable failure paths before they surface themselves. The LTCM collapse Munger avoided is structurally identical to a distributed system with no circuit breaker: high leverage = no backpressure, a tail event takes the whole stack.
+
+*Incentive-Caused Bias = Misaligned reward functions.*
+In ML systems, a model optimizes for the loss function it's given. If the loss function doesn't encode what you actually care about, the model will find a strategy that minimizes measured loss while destroying unmeasured value. This is RLHF misalignment, it's also Wells Fargo. The fix is the same in both cases: change the reward signal, not the actor.
+
+*Lollapalooza Effect = Cascading failures.*
+Distributed systems fail catastrophically when multiple components degrade simultaneously and their failure modes reinforce each other — retry storms + cache misses + database lock contention is a lollapalooza event. Any single failure is recoverable. All three at once, in a high-traffic window, is not. The mitigation in both domains is isolation: break the feedback loops before they can couple.
+
+*Latticework = Cross-cutting concerns with domain isolation.*
+A system designed only by database engineers has no network model. A system designed only by network engineers has no data model. Robust systems require multiple disciplinary perspectives applied during design, not retrofitted after. Munger's latticework is the same argument about human decisions.
+
+*Circle of Competence = Bounded context.*
+In domain-driven design, a bounded context is the explicit acknowledgment that a service knows its own domain and should not pretend to know others. The anti-pattern is the service that reaches into adjacent domains without understanding their invariants — exactly what happens when a decision-maker operates outside their circle.
+
+---
+
+**Career & Decision Architecture**
+
+Munger's models function as a state machine for high-stakes professional decisions:
+
+*Entry into new roles or domains.* Trigger: circle of competence check. If the causal model of the domain is unclear, the correct behavior is to shrink initial bets and extend observation period. Not to avoid the domain — to calibrate stake size to actual (not perceived) competence.
+
+*Evaluating advice from vested parties.* Trigger: incentive-caused bias scan. The question is not whether the advisor is honest. It is whether the incentive structure makes honest reasoning structurally improbable. This applies to recruiters, investors, consultants, and internal champions of projects they built.
+
+*Team or market consensus.* Trigger: lollapalooza check. When everyone in a room agrees, run the count of simultaneous biases. If 3+ are present, the consensus is a signal to slow down, not to feel more certain.
+
+*Decisions with permanent outcomes.* Trigger: inversion first, always. Career decisions that are unrecoverable (burning relationships, reputational events, taking on debt you can't service, joining a company betting everything on one outcome) require the failure map before the opportunity map. The upside has a ceiling. Some downsides don't.
