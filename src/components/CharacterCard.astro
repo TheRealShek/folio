@@ -8,14 +8,39 @@ interface Props {
   series?: string;
   rating?: number;
   cover?: string;
+  slotType?: "anchor" | "secondary" | "quiet";
+  emphasis?: "anchor" | "secondary" | "quiet";
+  tone?: "anchored" | "balanced" | "calm" | "quiet";
+  spanHint?: 1 | 2;
 }
 
-const { href, name, series, rating, cover } = Astro.props;
+const {
+  href,
+  name,
+  series,
+  rating,
+  cover,
+  slotType = "quiet",
+  emphasis = "quiet",
+  tone = "calm",
+  spanHint = 1
+} = Astro.props;
 ---
 
 <a
   href={href}
-  class="group flex h-full flex-col border border-[var(--border)] bg-[var(--bg-surface)] transition duration-200 ease-in-out hover:-translate-y-[3px] hover:border-[var(--accent-dim)] hover:bg-[var(--bg-elevated)]"
+  class:list={[
+    "group flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] transition-cinematic hover:-translate-y-[0.18rem] hover:border-[var(--accent-dim)] hover:bg-[var(--bg-elevated)] hover:shadow-[0_6px_32px_0_rgba(201,168,76,0.11)]",
+    emphasis === "anchor" ? "border-premium shadow-[0_8px_36px_0_rgba(201,168,76,0.16)]" : "",
+    emphasis === "secondary" ? "opacity-[0.985]" : "",
+    emphasis === "quiet" ? "opacity-[0.97]" : ""
+  ]}
+  style="box-shadow: 0 1px 2px 0 rgba(20,20,20,0.04);"
+  data-slot-type={slotType}
+  data-emphasis={emphasis}
+  data-tone={tone}
+  data-span-hint={spanHint}
+  tabindex="0"
 >
   {cover && (
     <div class="aspect-[3/4] overflow-hidden border-b border-[var(--border)] bg-[var(--bg-elevated)]">
@@ -24,28 +49,38 @@ const { href, name, series, rating, cover } = Astro.props;
         alt={name}
         width={720}
         height={960}
-        class="h-full w-full object-cover transition duration-200 ease-in-out group-hover:scale-[1.02]"
+        class="h-full w-full object-cover transition-transform duration-400 ease-[cubic-bezier(.77,0,.18,1)] group-hover:scale-[1.01] group-hover:brightness-105"
+        style="filter: grayscale(0.08) contrast(1.08);"
       />
     </div>
   )}
 
-  <div class:list={["flex flex-1 flex-col justify-end px-5 py-5 sm:px-6", !cover && "min-h-[16rem]"]}>
+  <div class:list={[
+    "flex flex-1 flex-col justify-end gap-1.5 px-4 py-2.5 sm:px-5 sm:py-3",
+    !cover && "min-h-[8.7rem]",
+    spanHint === 2 ? "py-2.5 sm:py-3" : "",
+    emphasis === "anchor" ? "px-5 py-3 sm:py-4" : "",
+    emphasis === "secondary" ? "px-4 py-2.5 sm:py-3" : ""
+  ]}>
     <h2
       class:list={[
-        "text-[var(--text-primary)] leading-none",
-        cover ? "text-[2rem]" : "max-w-[10ch] text-[clamp(2.6rem,7vw,4rem)]"
+        "text-[var(--text-primary)] leading-tight tracking-tight",
+        cover ? "font-serif text-[1.13rem] sm:text-[1.22rem]" : "max-w-[12ch] font-serif text-[clamp(1.2rem,3vw,1.7rem)]",
+        emphasis === "anchor" ? "text-[1.24rem] sm:text-[1.34rem]" : "",
+        emphasis === "secondary" ? "text-[1.13rem] sm:text-[1.22rem]" : "",
+        emphasis === "quiet" ? "text-[1.08rem] sm:text-[1.16rem]" : ""
       ]}
-      style="font-family: var(--font-display);"
+      style="font-family: var(--font-display); letter-spacing: -0.01em; display: flex; align-items: center; min-height: 2.2em;"
     >
-      {name}
+      <span style="margin: 0 auto; display: block;">{name}</span>
     </h2>
 
     {(series || rating !== undefined) && (
-      <div class="mt-4 flex items-end justify-between gap-4">
+      <div class="mt-0.5 flex items-end justify-between gap-2">
         {series && (
           <p
-            class="m-0 text-sm uppercase tracking-[0.16em] text-[var(--text-muted)]"
-            style="font-family: var(--font-ui);"
+            class="m-0 flex items-end text-xs uppercase tracking-[0.13em] text-[var(--text-muted)] opacity-80"
+            style="font-family: var(--font-ui); letter-spacing: 0.13em;"
           >
             {series}
           </p>

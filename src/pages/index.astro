@@ -2,11 +2,14 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CharacterCard from "../components/CharacterCard.astro";
+import { buildCompositionPlan } from "../utils/composition";
 import { getCharacterName, getCharacterSlug } from "../utils/characters";
 
 const characters = (await getCollection("characters")).sort((a, b) =>
   getCharacterName(a).localeCompare(getCharacterName(b))
 );
+
+const compositionPlan = buildCompositionPlan(characters);
 
 const types = [...new Set(characters.map((character) => character.data.type).filter(Boolean))].sort() as string[];
 const showFilters = types.length > 1;
@@ -40,15 +43,27 @@ const filters = ["all", ...types];
       </div>
     )}
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {characters.map((character) => (
-        <div data-character-type={character.data.type ?? "all"}>
+    <div class="character-grid">
+      {compositionPlan.items.map((item) => (
+        <div
+          class="composition-card"
+          data-character-type={item.entry.data.type ?? "all"}
+          data-slot-type={item.slotType}
+          data-emphasis={item.emphasis}
+          data-tone={item.tone}
+          data-span={item.span}
+          style={`--card-stagger: ${item.stagger}px; grid-column: span ${item.span};`}
+        >
           <CharacterCard
-            href={`/characters/${getCharacterSlug(character)}/`}
-            name={getCharacterName(character)}
-            series={character.data.series}
-            rating={character.data.rating}
-            cover={character.data.cover}
+            href={`/characters/${getCharacterSlug(item.entry)}/`}
+            name={getCharacterName(item.entry)}
+            series={item.entry.data.series}
+            rating={item.entry.data.rating}
+            cover={item.entry.data.cover}
+            slotType={item.slotType}
+            emphasis={item.emphasis}
+            tone={item.tone}
+            spanHint={item.span}
           />
         </div>
       ))}

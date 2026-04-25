@@ -42,6 +42,15 @@ const { title, description, name, series, rating, tags, cover, spoilers, prev, n
         />
         <div class="absolute inset-x-0 bottom-0 h-[40%] bg-linear-to-t from-[var(--bg-base)] to-transparent"></div>
         <div class="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-6 pb-10 lg:px-8">
+          <a
+            href="/"
+            class="mb-6 hidden w-fit items-center gap-2 text-xs uppercase tracking-[0.14em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)] md:inline-flex"
+            style="font-family: var(--font-ui);"
+            aria-label="Back to archive"
+          >
+            <span aria-hidden="true">&larr;</span>
+            <span>Back</span>
+          </a>
           <h1
             class="max-w-[12ch] text-[clamp(3rem,8vw,6rem)] leading-none text-[var(--text-primary)]"
             style="font-family: var(--font-display);"
@@ -61,6 +70,15 @@ const { title, description, name, series, rating, tags, cover, spoilers, prev, n
     </section>
   ) : (
     <section class="mx-auto max-w-6xl px-6 pb-8 pt-12 lg:px-8 lg:pt-16">
+      <a
+        href="/"
+        class="mb-6 hidden w-fit items-center gap-2 text-xs uppercase tracking-[0.14em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)] md:inline-flex"
+        style="font-family: var(--font-ui);"
+        aria-label="Back to archive"
+      >
+        <span aria-hidden="true">&larr;</span>
+        <span>Back</span>
+      </a>
       <h1
         class="max-w-[12ch] text-[clamp(3rem,8vw,6rem)] leading-none text-[var(--text-primary)]"
         style="font-family: var(--font-display);"

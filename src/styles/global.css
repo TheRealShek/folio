@@ -23,6 +23,7 @@ html {
   background: var(--bg-base);
   color: var(--text-primary);
   scroll-behavior: smooth;
+  font-size: 15.5px;
 }
 
 body {
@@ -33,6 +34,7 @@ body {
   font-family: var(--font-ui);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
 }
 
 * {
@@ -42,6 +44,13 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s cubic-bezier(.77,0,.18,1), text-shadow 0.3s cubic-bezier(.77,0,.18,1);
+}
+
+a:hover,
+a:focus {
+  color: var(--accent);
+  text-shadow: 0 1px 8px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 img {
@@ -51,11 +60,109 @@ img {
 button,
 summary,
 a {
-  min-height: 44px;
+  min-height: 38px;
 }
 
 .divider {
   border-top: 1px solid var(--divider);
+}
+
+.character-grid {
+  display: grid;
+  gap: 1.45rem 1.05rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: stretch;
+  padding-bottom: 0.5rem;
+}
+
+.character-grid > div {
+  display: block;
+  min-width: 0;
+}
+
+.composition-card {
+  margin-top: var(--card-stagger, 0px);
+  transition: transform 0.55s cubic-bezier(.77,0,.18,1), opacity 0.45s cubic-bezier(.77,0,.18,1);
+  will-change: transform, opacity;
+}
+
+.composition-card[data-span="2"] {
+  grid-column: span 2;
+}
+
+.composition-card[data-slot-type="anchor"] {
+  opacity: 1;
+}
+
+.composition-card[data-slot-type="secondary"] {
+  opacity: 0.98;
+}
+
+.composition-card[data-slot-type="quiet"] {
+  opacity: 0.95;
+}
+
+.composition-card[data-tone="quiet"] {
+  opacity: 0.93;
+}
+
+.composition-card[data-tone="calm"] {
+  opacity: 0.95;
+}
+
+.composition-card[data-tone="balanced"] {
+  opacity: 0.97;
+}
+
+.composition-card[data-tone="anchored"] {
+  opacity: 1;
+}
+
+.composition-card:hover {
+  transform: translateY(-2px);
+}
+
+.composition-card[data-slot-type="anchor"]:hover {
+  transform: translateY(-3px);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.026;
+  background: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
+  mix-blend-mode: soft-light;
+}
+
+.border-premium {
+  border: 1.18px solid color-mix(in srgb, var(--border) 82%, var(--accent) 13%);
+  box-shadow: 0 2.5px 18px 0 rgba(201,168,76,0.055);
+  border-radius: 1.08rem;
+}
+
+.transition-cinematic {
+  transition: all 0.55s cubic-bezier(.77,0,.18,1);
+  will-change: box-shadow, border-color, transform;
+}
+
+a[data-slot-type="anchor"] {
+  border-color: color-mix(in srgb, var(--border) 72%, var(--accent) 18%);
+  box-shadow: 0 6px 30px 0 rgba(201, 168, 76, 0.11);
+}
+
+a[data-slot-type="secondary"] {
+  border-color: color-mix(in srgb, var(--border) 86%, var(--accent) 7%);
+}
+
+a[data-slot-type="quiet"] {
+  border-color: color-mix(in srgb, var(--border) 90%, var(--accent) 4%);
+}
+
+a[data-slot-type="anchor"]:hover {
+  box-shadow: 0 8px 36px 0 rgba(201, 168, 76, 0.14);
 }
 
 .prose {
@@ -130,22 +237,4 @@ a {
   margin: 2.5rem 0;
   border: 0;
   border-top: 1px solid var(--divider);
-}
-
-.prose code {
-  font-size: 0.95em;
-}
-
-.filter-scrollbar {
-  scrollbar-width: none;
-}
-
-.filter-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .prose {
-    font-size: 15px;
-  }
 }
