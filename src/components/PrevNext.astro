@@ -22,22 +22,24 @@ const { prev, next } = Astro.props;
     {prev && (
       <a
         href={`/characters/${getCharacterSlug(prev)}/`}
-        class="inline-flex min-h-11 items-center text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
+        class="inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
         style="font-family: var(--font-ui);"
       >
-        ← {getCharacterName(prev)}
+        <span aria-hidden="true" class="leading-none">&larr;</span>
+        <span>{getCharacterName(prev)}</span>
       </a>
     )}
   </div>
 
-  <div class="md:text-right">
+  <div class="text-right">
     {next && (
       <a
         href={`/characters/${getCharacterSlug(next)}/`}
-        class="inline-flex min-h-11 items-center text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
+        class="inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
         style="font-family: var(--font-ui);"
       >
-        {getCharacterName(next)} →
+        <span>{getCharacterName(next)}</span>
+        <span aria-hidden="true" class="leading-none">&rarr;</span>
       </a>
     )}
   </div>

@@ -25,17 +25,22 @@ const {
   tone = "calm",
   spanHint = 1
 } = Astro.props;
+
+const anchorBorderStyle =
+  emphasis === "anchor"
+    ? "border: 1.6px solid color-mix(in srgb, var(--accent) 62%, var(--border) 38%);"
+    : "";
 ---
 
 <a
   href={href}
   class:list={[
     "group flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] transition-cinematic hover:-translate-y-[0.18rem] hover:border-[var(--accent-dim)] hover:bg-[var(--bg-elevated)] hover:shadow-[0_6px_32px_0_rgba(201,168,76,0.11)]",
-    emphasis === "anchor" ? "border-premium shadow-[0_8px_36px_0_rgba(201,168,76,0.16)]" : "",
-    emphasis === "secondary" ? "opacity-[0.985]" : "",
-    emphasis === "quiet" ? "opacity-[0.97]" : ""
+    emphasis === "anchor" ? "opacity-100" : "",
+    emphasis === "secondary" ? "opacity-[0.94]" : "",
+    emphasis === "quiet" ? "opacity-[0.88]" : ""
   ]}
-  style="box-shadow: 0 1px 2px 0 rgba(20,20,20,0.04);"
+  style={`box-shadow: 0 1px 2px 0 rgba(20,20,20,0.04); ${anchorBorderStyle}`}
   data-slot-type={slotType}
   data-emphasis={emphasis}
   data-tone={tone}
@@ -58,17 +63,12 @@ const {
   <div class:list={[
     "flex flex-1 flex-col justify-end gap-1.5 px-4 py-2.5 sm:px-5 sm:py-3",
     !cover && "min-h-[8.7rem]",
-    spanHint === 2 ? "py-2.5 sm:py-3" : "",
-    emphasis === "anchor" ? "px-5 py-3 sm:py-4" : "",
-    emphasis === "secondary" ? "px-4 py-2.5 sm:py-3" : ""
+    spanHint === 2 ? "py-2.5 sm:py-3" : ""
   ]}>
     <h2
       class:list={[
         "text-[var(--text-primary)] leading-tight tracking-tight",
-        cover ? "font-serif text-[1.13rem] sm:text-[1.22rem]" : "max-w-[12ch] font-serif text-[clamp(1.2rem,3vw,1.7rem)]",
-        emphasis === "anchor" ? "text-[1.24rem] sm:text-[1.34rem]" : "",
-        emphasis === "secondary" ? "text-[1.13rem] sm:text-[1.22rem]" : "",
-        emphasis === "quiet" ? "text-[1.08rem] sm:text-[1.16rem]" : ""
+        cover ? "font-serif text-[1.13rem] sm:text-[1.22rem]" : "max-w-[12ch] font-serif text-[clamp(1.2rem,3vw,1.7rem)]"
       ]}
       style="font-family: var(--font-display); letter-spacing: -0.01em; display: flex; align-items: center; min-height: 2.2em;"
     >

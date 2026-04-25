@@ -64,15 +64,15 @@ const PRIORITY_WEIGHTS: Record<string, number> = {
 };
 
 const SLOT_TYPE_WEIGHTS: Record<SlotType, number> = {
-  anchor: 1.35,
-  secondary: 1.08,
-  quiet: 0.86
+  anchor: 1.45,
+  secondary: 1,
+  quiet: 0.82
 };
 
 const EMPHASIS_WEIGHTS: Record<EmphasisLevel, number> = {
-  anchor: 1.12,
+  anchor: 1,
   secondary: 1,
-  quiet: 0.94
+  quiet: 1
 };
 
 const TEMPLATES: CompositionTemplate[] = [
@@ -233,10 +233,6 @@ const scoreCandidate = (
 
   if (context.previousAnchorId && entry.id === context.previousAnchorId) {
     weight *= 0.58;
-  }
-
-  if (slot.type === "anchor") {
-    weight *= 1.15;
   }
 
   return Math.max(weight, 0.01);

@@ -2,14 +2,31 @@
 ---
 
 <header class="sticky top-0 z-50">
-  <div style="background: color-mix(in srgb, var(--bg-base) 80%, transparent); backdrop-filter: blur(12px);">
+  <div
+    class="relative"
+    style="background: color-mix(in srgb, var(--bg-base) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid color-mix(in srgb, var(--divider) 86%, transparent);"
+  >
     <div class="mx-auto flex max-w-6xl items-center px-6 py-4 lg:px-8">
       <a
         href="/"
-        class="inline-flex items-center py-1 text-3xl leading-none text-[var(--text-primary)]"
-        style="font-family: var(--font-display);"
+        class="group inline-flex items-center gap-3 py-1.5 text-[2.1rem] leading-[0.94] text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--text-primary)]"
+        style="font-family: var(--font-display); letter-spacing: 0.01em;"
+        aria-label="Folio home"
       >
-        Folio
+        <span
+          class="inline-flex h-7 w-7 items-center justify-center border border-[var(--accent-dim)]/70 text-[0.72rem] text-[var(--accent)]"
+          style="font-family: var(--font-ui);"
+          aria-hidden="true"
+        >
+          F
+        </span>
+        <span class="relative inline-flex items-center">
+          Folio
+          <span
+            class="ml-2 inline-block h-1 w-1 rounded-full bg-[var(--accent)]/75 opacity-80"
+            aria-hidden="true"
+          ></span>
+        </span>
       </a>
     </div>
   </div>
