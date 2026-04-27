@@ -1,0 +1,290 @@
+# Richard Feynman - Anti-Fooling System Architect
+
+---
+
+### 1. Core Objective
+
+Feynman's entire mental architecture solves one problem: how do you stop yourself from believing things that aren't true? He wasn't fighting ignorance — ignorance is cheap to fix. He was fighting the harder thing: false knowledge. The state where you think you understand something, act on that belief, and are wrong in ways that don't surface until it's too late. Every model he used either detects this failure mode early, prevents conditions that cause it, or makes its cost obvious. The system is defensive, not offensive. It's built less to find truth than to kill the substitutes for truth that naturally grow in its place.
+
+---
+
+### 2. Key Mental Models
+
+---
+
+**Name:** Anti-Path-Dependence
+
+**Definition:** Deliberately withhold exposure to existing solutions until you have built your own mental model of the problem from raw observation and first principles. The goal is not ignorance of prior work — it is preserving independent reasoning pathways before they can be colonized by someone else's.
+
+**Mechanism:** Cognition has strong path dependence: once a method enters your working memory and produces results, the neural cost of using it drops faster than the cost of generating an alternative. This is a feature, not a bug — it's how expertise works. But it has a failure mode. If you adopt a field's dominant framework before your intuition has formed, you'll spend the rest of your time working within that framework's constraints without realizing you're inside a box. You'll see the anomalies that the framework predicts and ignore the ones it can't account for. Feynman exploited path independence as a discovery mechanism: by deriving quantum mechanics via path integrals — a route he built independently — he produced not just correct answers but a structurally different picture of the same physics. His diagrams weren't a shortcut. They were a different framing that happened to also be simpler. You can't get a different framing by improving on someone else's.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`STANDARD SEQUENCE:
+  observe problem → read literature → adopt framework → solve within it
+  (invisible constraint: you can only see what the framework lets you see)
+
+FEYNMAN SEQUENCE:
+  observe problem → build own intuition → solve → THEN read literature
+  (comparison reveals: what did I miss? what did I see they missed?)
+
+RESULT:
+  path integral formulation → Feynman diagrams
+  (a calculational tool the existing framework couldn't have generated)`}
+</pre>
+
+**Example:** He was stuck on beta decay for a while. He'd been reading expert reports that all agreed the coupling type was T. He never went back to check the original data. His mistake wasn't ignorance — he'd read plenty. His mistake was trusting the chain of summaries. When he finally looked at the actual measurements, V fit. The experts had been citing each other in a circle. He said afterward he should have immediately asked, "How strong is the evidence it's T?" — not accepted the consensus as a baseline and worked from there. The whole episode embarrassed him. He'd become exactly the kind of physicist he usually mocked.
+
+**Failure Case:** This model breaks when the field's current framework is load-bearing infrastructure for the problem — when the "box" actually contains the best tools for the job. Spending months reinventing calculus before using it to solve a differential equation is waste. The model only pays off when the existing framework is either wrong or incomplete in ways that matter. Without independent evidence that something is off, anti-path-dependence is just slow learning with extra steps.
+
+---
+
+**Name:** Decomposition-Before-Narrative
+
+**Definition:** Before reasoning about any claim, break it into its atomic parts: raw observation, assumption, belief, mechanism, causal conjecture. Keep them separate. Reason about each one independently. Never treat a narrative that bundles them together as a unit of analysis.
+
+**Mechanism:** Narratives feel coherent. That's the danger. A good story about why X causes Y is easier to hold in memory, easier to communicate, and easier to defend than a messy pile of partially-tested atomic claims. But narrative structure hides the seams between things you know and things you assumed. When a narrative prediction fails, you can't localize the failure — the whole thing collapses and you have to rebuild from scratch. Decomposition keeps each part falsifiable independently. When one part breaks, you know which part. The mechanism is essentially forcing a compiler error rather than a runtime crash: decomposed models fail loudly and early; narrative models fail silently and late. This is why Feynman dissected NASA's reasoning piece by piece. He found that "1-in-100,000" wasn't a measurement — it was a desired output that had been reverse-engineered into components. The narrative held together. The seams didn't.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`BUNDLED NARRATIVE:
+  "O-rings are safe at launch temperatures"
+  ↓ fails → entire claim collapses
+  ↓ what broke? unknown without decomposition
+
+DECOMPOSED:
+  observation:   o-rings scorched on previous flights
+  assumption:    erosion is within acceptable limits
+  mechanism:     rubber flexibility is temperature-independent
+  conjecture:    cold launch day = no change in sealing behavior
+  ↓ mechanism fails → localized: cold reduces rubber flexibility
+  ↓ fix: test mechanism independently (ice water demo)`}
+</pre>
+
+**Example:** NASA management told him the shuttle failure risk was 1-in-100,000. That's a number that sounds like it came from data. Feynman went and asked the engineers what they actually thought. They said 1-in-50 to 1-in-200. The gap wasn't a rounding error. Management had started with what the number _needed_ to be — low enough to justify crewed flights — and worked backward to make the components add up to it. Feynman clocked this because he always asked "where did this number come from?" not "what does this number say?" The provenance of a claim is part of the claim.
+
+**Failure Case:** Decomposition hits diminishing returns fast in domains where the mechanism level is not yet understood. When the causal chain is genuinely unknown — early-stage biology, certain economic effects — forcing decomposition produces the illusion of rigor (many atomic claims) without its benefit (independently testable parts). You end up with a precise list of things you don't know instead of an approximate model of what you do know. Sometimes the narrative approximation is more useful.
+
+---
+
+**Name:** Name ≠ Knowledge
+
+**Definition:** Knowing what something is called gives you exactly zero predictive power over how it behaves. A label is a pointer, not a model. Until you can describe the mechanism — what it does when you push it, what breaks it, what it interacts with — you don't know the thing. You know its address.
+
+**Mechanism:** Labels are cheap to acquire and feel like knowledge because they slot into language smoothly. You can say "electromagnetic field" in a sentence and produce a coherent paragraph. This creates an illusion of understanding that blocks actual inquiry — you've checked the box without doing the work. Feynman's test was behavioral: can you predict something new from your model? Not repeat what you've read — predict something you haven't seen. If you can't, you have a label, not a model. The mechanism that makes this discipline hard is social: knowing names is how you signal competence. Stopping to ask "but what is it _doing_?" reads as ignorance. It's actually the only path to understanding.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`TEST:
+
+  Q: "Why do birds fly south for winter?"
+  A: "Instinct."           ← label (zero predictive power)
+  A: "They follow magnetic field lines
+      to track temperature gradients
+      that correlate with food density." ← mechanism (makes predictions)
+
+FEYNMAN'S OWN PHRASING:
+  "I learned very early the difference
+   between knowing the name of something
+   and knowing something."`}
+</pre>
+
+**Example:** He sat in on biology seminars at Caltech just to experience being in a domain where he didn't know the names — on purpose. He wanted the friction of not having labels, because that forced him to understand things at the behavior level. He found he could sometimes work out what a protein must be doing from what they observed, before he knew what it was called. When he eventually learned the name, he'd already built the model. He thought this was the right order. Most people did it backwards.
+
+**Failure Case:** This model can make you abrasive in collaborative settings. Teams operate on shared vocabulary. If you demand mechanistic justification every time someone uses a term — "what do you actually mean by 'technical debt'?" — you create friction that slows work without always improving it. Feynman could afford this because he had enough social capital and enough genuine insight to cash in. Without the insight, insisting on mechanism clarity is just being difficult.
+
+---
+
+**Name:** Source Reflex
+
+**Definition:** Any claim that arrives via a chain of summaries — expert reports, textbook consensus, secondhand citations — must be traced back to the original data before it can be used as a reasoning input. The length of the chain is anti-correlated with the reliability of the output.
+
+**Mechanism:** Each link in a citation chain introduces compression. Compression discards information, and the information discarded is systematically biased toward anomalies and caveats — exactly the things that would invalidate the consensus. By the time a finding is summarized three times, its error bars have vanished, its conditions have been dropped, and its authors' uncertainty has been replaced with declarative confidence. This is not malice — it's what happens when humans communicate complex findings in prose. Feynman's reflex was to skip the chain and read the original data or, if that wasn't possible, to explicitly tag his claim with "this came via N summaries" and treat it accordingly. The beta decay error was exactly this: he read expert reports, the experts had read each other, and none of them had gone back to check if the original evidence was actually conclusive.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`COMPRESSION CHAIN:
+  raw data
+    → paper (drops outliers, conditions)
+      → review (drops caveats, uncertainty)
+        → textbook (drops review's hedging)
+          → consensus ("everyone knows X")
+
+WHAT GETS DROPPED:
+  conditions under which X is true
+  effect size
+  replication status
+  alternative interpretations
+
+FEYNMAN RULE:
+  claim reliability ∝ 1/chain_length`}
+</pre>
+
+**Example:** When he joined the Challenger commission, everyone else started with NASA's official briefings. He started with engineers. Not their managers. The engineers on the Solid Rocket Booster program had known about O-ring erosion for years. That information existed in the system. It just hadn't survived the trip up the chain. Management's model of reality was a lossy compression of what the engineers actually knew. Feynman went back to the source and the picture was completely different.
+
+**Failure Case:** Going to primary sources takes time most workflows don't have. In fast-moving environments — incident response, market moves, tactical decisions — you have to act on summaries because there's no time to trace chains. The reflex also breaks down when you don't have domain expertise to read primary data — raw genomics papers or circuit-level hardware specs require prerequisites you may not have. In both cases, you're forced to trust the chain. The least-bad version is to at least know you're doing it and size your confidence accordingly.
+
+---
+
+**Name:** Cargo Cult Detection
+
+**Definition:** Any system where the form of a working process has been adopted but the mechanism is missing will not produce the results of the original. The test: can you articulate what physical or causal process generates the output? If you can only describe what it looks like, you have cargo cult.
+
+**Mechanism:** Humans learn by imitation before they learn by understanding. This works well for acquiring skills — copying posture, copying syntax, copying workflow. It fails catastrophically when the imitated process has a hidden mechanism that the imitator hasn't acquired. The islanders built runways and control towers because they'd seen runways and control towers precede cargo. They had the correlation right. They missed the causal chain entirely. The failure mode in science, engineering, and management is identical: adopt the vocabulary and structure of successful practice without understanding what actually produces the results. The form runs correctly. Nothing lands. Feynman's test was: if I broke one part of this, would I know which part caused the failure? If the answer is no, you're in cargo cult territory.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`CARGO CULT STRUCTURE:
+  observe: [process A] → [result B]
+  replicate: [process A]
+  expect: [result B]
+  get: nothing
+
+  missing: the actual causal mechanism between A and B
+
+CARGO CULT TEST:
+  "What would I change to make this STOP working?"
+  if you cannot answer → you don't understand the mechanism
+  if you can           → you have a model, not just a form`}
+</pre>
+
+**Example:** Feynman watched a psych researcher build an experiment on top of another researcher's results without first replicating the baseline in her own lab. She just assumed the prior result would hold under her conditions and moved straight to testing her modification. He told her she had to reproduce condition X before changing it to condition Y, otherwise she had no idea what was actually happening. She thought that was wasteful. He thought it was the only way to know if you were studying the right thing at all. She was cargo-culting the prior study — inheriting its conclusions without inheriting its empirical foundation.
+
+**Failure Case:** Cargo cult detection applied too aggressively produces paralysis. Some processes work before anyone knows why. Empirical medicine ran on pattern-matching for centuries before mechanism-level biology caught up. If you refuse to use anything until the mechanism is understood, you miss real-world effectiveness that exists before theory explains it. The model's correct domain is: processes where you need to modify or extend them. You can't extend something you only imitate — you need the mechanism. For processes you're using off-the-shelf without modification, imitation is often fine.
+
+---
+
+**Name:** Externalized Cognition
+
+**Definition:** Writing is not a record of thinking. It is the substrate on which thinking happens. Complex reasoning cannot occur reliably in working memory alone; it requires an external medium to hold partial states, expose contradictions, and allow non-linear revision.
+
+**Mechanism:** Working memory has a hard capacity limit — roughly 4 chunks simultaneously. Any problem with more than 4 interacting parts requires external storage for sub-results. But there's a second effect that's less obvious: writing forces serialization. You cannot write two things at once. This means every sentence is a commitment to a specific ordering of ideas, which exposes logical gaps that were invisible when the ideas floated loosely in your head. When Feynman said his notebooks weren't records of his thinking but were his thinking, he meant this literally: the paper was doing half the cognitive work. Removing the paper would have degraded the quality of his reasoning as surely as removing half his neurons would have. This is why the Feynman Technique works — it's not a study trick. It's a mechanism for forcing serialization and exposing the delta between felt understanding and expressible understanding.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`INTERNAL REASONING:
+  [concept A] --fuzzy--> [concept B] --fuzzy--> [conclusion]
+  gaps are invisible
+  contradictions are tolerated
+  dead ends loop silently
+
+EXTERNALIZED REASONING:
+  write: "A implies B because..."
+  ↓ stalls → gap found: why does A imply B?
+  write: "B leads to..."
+  ↓ contradiction detected: conflicts with earlier line 3
+  ↓ forced to resolve or discard
+
+RESULT: paper finds bugs in thinking that internal reasoning misses`}
+</pre>
+
+**Example:** He didn't just use notebooks to store results. He worked through his physics on paper because he found that without the paper, he couldn't tell whether he understood something or just thought he did. The felt sense of understanding is unreliable — it comes before understanding and hangs around after you've stopped understanding something. Writing broke this. If he couldn't put it on paper in a way that held together logically, he didn't understand it yet. That's a stricter standard than most people apply, which is why most people carry around more false understanding than Feynman did.
+
+**Failure Case:** Externalization has a failure mode: mistaking fluency in writing for depth of understanding. A skilled writer can produce coherent prose about a topic they don't understand — the sentences connect, the logic flows, and nothing obviously breaks. This is the exact mechanism behind certain kinds of academic fraud and a lot of management communication. Writing exposes gaps when you write at the level of mechanism. Writing at the level of narrative can be arbitrarily fluent while hiding complete ignorance of how anything actually works.
+
+---
+
+**Name:** Risk Inversion Detection
+
+**Definition:** Any probability or confidence estimate that was derived by working backward from a desired conclusion — rather than forward from empirical frequency — is not a measurement. It is a wish expressed in the language of measurement.
+
+**Mechanism:** Numbers have credibility that prose doesn't. "I think this is safe" invites challenge. "The failure probability is 0.00001" sounds like a fact. This property makes quantitative claims ideal vehicles for smuggling desired conclusions past scrutiny. The manipulation is subtle: you start with the conclusion you need (low failure probability), you break the system into components, and you assign component probabilities that, when combined, produce the number you started with. The result looks like a bottom-up calculation — you can even show the spreadsheet — but the inputs were reverse-engineered from the output. Feynman's diagnostic was simple: ask for the provenance of each component probability. Where did the engineers get these numbers? From tests? From failure history? From models? If the answer is "from the overall target," the whole structure is circular. This is the quantitative version of cargo cult: the form of statistical rigor without the substance.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`HONEST DIRECTION:
+  empirical failure rate of component A = 1/200
+  empirical failure rate of component B = 1/150
+  combined system failure = f(A, B) → actual number
+
+INVERTED DIRECTION:
+  desired system failure = 1/100,000
+  ↓ work backward
+  assign component A = 1/X
+  assign component B = 1/Y such that f(X, Y) = 100,000
+  → looks like bottom-up analysis
+  → is actually top-down wish fulfillment
+
+FEYNMAN DIAGNOSTIC:
+  "Where did this component probability come from?"
+  answer: from tests          → valid
+  answer: from the overall target → circular`}
+</pre>
+
+**Example:** NASA engineers told Feynman their personal estimate of catastrophic failure risk was somewhere between 1-in-50 and 1-in-200. Management's official figure was 1-in-100,000. The gap is three orders of magnitude. Feynman found that management's number was the politically necessary number — it had to be low enough to justify the mission rate and keep congressional funding intact. The component probabilities were assigned to hit that target. The engineers, who were closer to the actual hardware, had used failure history and test data to produce their own estimates. Two different methods, two wildly different answers. The inversion was invisible in the official documentation because the format of both was identical.
+
+**Failure Case:** This model can be weaponized to dismiss any quantitative estimate under uncertainty. In complex systems where you genuinely don't have empirical failure data — novel technologies, first deployments, unprecedented events — some degree of structural estimation is unavoidable. The failure is not using top-down reasoning; it's using top-down reasoning while presenting the output as bottom-up measurement. The model breaks if applied to any probabilistic reasoning in immature domains, which would mean rejecting all such reasoning rather than just the fraudulent kind.
+
+---
+
+### 3. Decision Framework
+
+**Step 1: Establish the source layer.**
+Where did this information come from? Original data, primary source, or summary chain? Estimate chain length. Tag confidence as `raw`, `1x-compressed`, or `N-compressed`. Treat differently.
+
+**Step 2: Decompose the claim.**
+Split into: what was observed, what was assumed, what mechanism is proposed, what causal chain connects them. List each separately. Mark which parts have been tested vs. inferred.
+
+**Step 3: Run the name-knowledge check.**
+For each key term in your model: can you describe what it _does_? Not what it is called. What behavior would it produce in a new scenario you haven't seen? If you can't, replace the term with "unknown mechanism" and reason from there.
+
+**Step 4: Test for cargo cult.**
+Ask: if I tried to break this process, what would I need to change? If you cannot answer — you do not understand the mechanism. Go back to Step 2 and decompose more finely.
+
+**Step 5: Check probability direction.**
+If anyone has produced a confidence estimate, ask: did this number come from empirical data moving forward, or from a target moving backward? Trace at least two component inputs to their source. If either was reverse-engineered, treat the estimate as unknown.
+
+**Step 6: Externalize before deciding.**
+Write out the reasoning. Not as summary — as chain. Observe where you stall. Stalls are gaps. Contradictions that appear on paper that felt absent in memory are real. Do not resolve them by writing past them.
+
+**Step 7: Withhold expert input until you have your own model.**
+If the decision involves a field where you have time to build intuition: form your own rough model first. Then read expert opinion. Compare the delta. The gap tells you where you had false priors and where the field has genuinely hard-won knowledge.
+
+---
+
+### 4. Pattern Recognition
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`SIGNAL                                             MODEL ACTIVE
+──────────────────────────────────────────────────────────────────────
+Consensus exists but primary data is unavailable   → Source Reflex
+System produces results but no one knows why       → Cargo Cult Detection
+You can explain it but not predict from it         → Name ≠ Knowledge
+A probability has no cited measurement origin      → Risk Inversion Detection
+Reasoning feels clear but writing it stalls you    → Externalized Cognition
+You're about to read expert literature             → Anti-Path-Dependence
+A prediction failed and you can't locate the bug   → Decomposition-Before-Narrative
+
+COMBINATION SIGNALS:
+high-stakes + consensus + no primary data          → Source Reflex + Decomposition
+official estimate + novel system                   → Risk Inversion + Cargo Cult`}
+</pre>
+
+---
+
+### 5. Leverage Points
+
+**Decomposition-Before-Narrative** produces asymmetric returns in debugging. Every hour spent decomposing a system before reading logs or stack traces eliminates entire categories of wrong hypotheses. Applied incorrectly — decomposing after forming a narrative — it becomes confirmation search rather than fault isolation.
+
+**Source Reflex** compounds. Each time you trace a claim to its original data, you also discover what the summary chain lost. Over time you build a map of which summary chains in a domain are lossy and which are reliable. This is durable knowledge that speeds all future reasoning in that domain.
+
+**Anti-Path-Dependence** has the highest ceiling and highest cost. Correctly applied to a problem where the existing framework is wrong or limited, it produces genuinely novel outputs — like path integrals. Applied to solved problems, it produces correct-but-redundant rederivations. Second-order effect: even when you arrive at the same answer the literature has, you arrive with a different picture of why it's true. That picture often generalizes to adjacent problems in ways the canonical picture doesn't.
+
+**Risk Inversion Detection**, applied downstream: once you've found one inverted probability in an organization's reasoning, the prior that other estimates are also inverted should increase sharply. NASA's O-ring numbers weren't a one-off. The same inversion pattern existed across multiple subsystems. The model surface-levels one number, but the leverage is in updating beliefs about the entire organization's measurement culture.
+
+**Name ≠ Knowledge** applied to your own reasoning: this is the one that costs the most socially and produces the most individual value. Every time you catch yourself using a term fluently without being able to specify its mechanism, you've found a false floor in your understanding. The payoff isn't just accuracy — it's that you stop building on foundations that will crack under load.
+
+---
+
+### 6. Systems Application
+
+**Backend / Distributed Systems Analogy**
+
+**Decomposition-Before-Narrative** maps directly to root cause analysis. In distributed systems, a symptom (elevated latency, cascading timeout) arrives as narrative: "the service is slow." Decomposing it means isolating: is this a network issue, a lock contention, a garbage collection pause, a downstream dependency? Each is independently testable. Feynman's insistence on atomic decomposition is identical to forcing engineers to write specific hypotheses before grepping logs — it prevents the confirmation bias that finds evidence for the first plausible explanation.
+
+**Cargo Cult Detection** is the correct frame for copy-pasted infrastructure patterns. A team adopts microservices because successful companies use microservices. They have the form. They don't have the organizational mechanism (independent deployment cadences, team ownership, service mesh observability) that makes the form produce value. The cargo is the pattern without the mechanism. Same applies to Kubernetes adoption at premature scale, or event sourcing without operational maturity for replay debugging.
+
+**Risk Inversion Detection** applies directly to SLA and reliability estimates. A backend team that derives its "four nines" SLA from business requirements rather than from measured component MTBF and dependency failure rates is running an inverted calculation. The SLA is a wish. The Feynman diagnostic: ask each component team where their reliability number came from. If any answer is "from the overall target" or "we assumed," the system-level SLA has no empirical basis.
+
+**Source Reflex** in backend context: when a production incident is reported via monitoring alert → runbook → on-call summary → postmortem, each layer compresses. The on-call engineer who wrote the runbook made assumptions about failure modes that may not match current system behavior. Following the runbook without understanding its empirical basis is the engineer-level version of reading expert reports without checking the original data.
+
+**Career & Decision Architecture**
+
+Anti-Path-Dependence, applied to career decisions: before accepting a senior engineer's or manager's framing of what good work looks like, build your own model from first-principles observation of what actually produces impact in the system you're in. Organizations have powerful socialization mechanisms — you absorb the official view of what matters faster than you realize. The engineers and managers around you are not corrupt; they're just summarizing. The summary has been compressed. You want to read the data.
+
+Name ≠ Knowledge produces a behavioral filter for evaluating teams and projects. When someone uses technical terms fluently in interviews or design docs, test mechanism: "Can you describe what happens when X fails?" People who understand at mechanism level answer precisely. People who understand at label level produce more labels. Over time you can distinguish quickly. This is a hiring signal and a self-audit.
+
+Cargo Cult Detection applied to process: most engineering rituals — standups, sprints, OKRs, code reviews — were originally mechanisms for specific failures they were designed to fix. When the problem they solved no longer exists or was never present, the ritual continues because it's now an organizational norm. Feynman's test: "If this process stopped tomorrow, which bad outcome would actually occur?" If nobody knows — cargo cult.

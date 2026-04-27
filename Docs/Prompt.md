@@ -1,7 +1,7 @@
-{/* ============================================================
-    PROMPT: Mental Models & Decision Systems Analysis
-    Usage: replace the value of PERSON below, then run.
-    ============================================================ */}
+{/_ ============================================================
+PROMPT: Mental Models & Decision Systems Analysis
+Usage: replace the value of PERSON below, then run.
+============================================================ _/}
 
 PERSON = [insert name]
 
@@ -25,17 +25,23 @@ Extract: how they actually reasoned, what they optimized for, where they failed.
 - Skip anything findable in first Google result — prioritize second-order effects and non-obvious failure cases
 - `/humanizer` applies exclusively to `Example` fields — nowhere else
 - Output as MDX document. No JSX components unless diagrams require it.
-- All diagrams use this exact tag:
+- All diagrams use this exact tag and format — no exceptions:
 
-```
-<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em;">
-```
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+{`LABEL:
+  line one
+  line two`}
+</pre>
+
+CRITICAL: diagram content MUST be inside {` `} (JSX template literal).
+Bare text inside <pre> will have newlines eaten by the MDX parser.
 
 ---
 
 ## OUTPUT STRUCTURE
 
 Start the document with:
+
 # PERSON - <3–5 word descriptor>
 
 ### 1. Core Objective
@@ -51,7 +57,7 @@ For each:
 **Name:**
 **Definition:** Precise. No promotional language.
 **Mechanism:** Internal logic and causal chain. Minimum 3 sentences. Explain WHY it works.
-**Example:** *(apply `/humanizer` here only)* Concrete, non-obvious case from their actual domain.
+**Example:** _(apply `/humanizer` here only)_ Concrete, non-obvious case from their actual domain.
 **Failure Case:** Specific failure mode — when and why this model breaks.
 
 Include monospace diagram per model where it clarifies the mechanism.
