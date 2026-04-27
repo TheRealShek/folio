@@ -1,40 +1,49 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CharacterCard from "../components/CharacterCard.astro";
-import { buildCompositionPlan } from "../utils/composition";
 import { getCharacterName, getCharacterSlug } from "../utils/characters";
 
-const characters = (await getCollection("characters")).sort((a, b) =>
-  getCharacterName(a).localeCompare(getCharacterName(b))
-);
+const characters = await getCollection("characters");
 
-const compositionPlan = buildCompositionPlan(characters);
+/* Shuffle characters on every render (Fisher-Yates) */
+const shuffled = [...characters];
+for (let i = shuffled.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+}
 
-const types = [...new Set(characters.map((character) => character.data.type).filter(Boolean))].sort() as string[];
+/* Assign tiers purely by shuffled position */
+type Tier = "hero" | "emphasis" | "subdued";
+const tierOf = (i: number, total: number): Tier => {
+  if (i < 2) return "hero";
+  if (i < Math.ceil(total * 0.5)) return "emphasis";
+  return "subdued";
+};
+
+const entries = shuffled.map((entry, i) => ({
+  entry,
+  tier: tierOf(i, shuffled.length),
+  name: getCharacterName(entry),
+  slug: getCharacterSlug(entry),
+  index: String(i + 1).padStart(2, "0"),
+}));
+
+/* Filters */
+const types = [...new Set(characters.map((c) => c.data.type).filter(Boolean))].sort() as string[];
 const showFilters = types.length > 1;
 const filters = ["all", ...types];
 ---
 
 <BaseLayout title="Folio" description="Personal character analysis and long-form reading.">
-  <section class="mx-auto max-w-6xl px-6 pb-16 pt-10 lg:px-8 lg:pt-14">
+  <section class="toc-section">
     {showFilters && (
-      <div class="filter-scrollbar -mx-6 mb-10 overflow-x-auto px-6">
-        <div
-          class="flex min-w-max gap-6 border-b border-[var(--divider)]"
-          aria-label="Character type filters"
-        >
-          {filters.map((filter, index) => (
+      <div class="toc-filters">
+        <div class="filter-track" aria-label="Character type filters">
+          {filters.map((filter, i) => (
             <button
               type="button"
-              class:list={[
-                "filter-tab border-b pb-3 pt-1 text-sm uppercase tracking-[0.18em] transition-colors duration-200",
-                index === 0
-                  ? "border-[var(--accent)] text-[var(--text-primary)]"
-                  : "border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)]"
-              ]}
+              class:list={["filter-tab", i === 0 && "active"]}
               data-filter={filter}
-              style="font-family: var(--font-ui);"
             >
               {filter}
             </button>
@@ -43,69 +52,55 @@ const filters = ["all", ...types];
       </div>
     )}
 
-    <div class="character-grid">
-      {compositionPlan.items.map((item) => (
-        <div
-          class="composition-card"
+    <div class="toc-list" role="list">
+      {entries.map((item, i) => (
+        <a
+          href={`/characters/${item.slug}/`}
+          class="toc-entry"
+          data-tier={item.tier}
           data-character-type={item.entry.data.type ?? "all"}
-          data-slot-type={item.slotType}
-          data-emphasis={item.emphasis}
-          data-tone={item.tone}
-          data-span={item.span}
-          style={`--card-stagger: ${item.stagger}px; grid-column: span ${item.span};`}
+          style={`--entry-index: ${i};`}
+          role="listitem"
         >
-          <CharacterCard
-            href={`/characters/${getCharacterSlug(item.entry)}/`}
-            name={getCharacterName(item.entry)}
-            series={item.entry.data.series}
-            rating={item.entry.data.rating}
-            cover={item.entry.data.cover}
-            slotType={item.slotType}
-            emphasis={item.emphasis}
-            tone={item.tone}
-            spanHint={item.span}
-          />
-        </div>
+          <span class="toc-index" aria-hidden="true">{item.index}</span>
+          <div class="toc-content">
+            <span class="toc-name">{item.name}</span>
+            {(item.entry.data.series || item.entry.data.rating !== undefined) && (
+              <span class="toc-subtext">
+                {item.entry.data.series}
+                {item.entry.data.series && item.entry.data.rating !== undefined && " · "}
+                {item.entry.data.rating !== undefined && `${item.entry.data.rating}/10`}
+              </span>
+            )}
+          </div>
+        </a>
       ))}
     </div>
   </section>
 
   {showFilters && (
     <script is:inline>
-      const setupCharacterFilters = () => {
+      const setupFilters = () => {
         const tabs = Array.from(document.querySelectorAll(".filter-tab"));
-        const cards = Array.from(document.querySelectorAll("[data-character-type]"));
+        const entries = Array.from(document.querySelectorAll(".toc-entry"));
+        if (!tabs.length || !entries.length) return;
 
-        if (!tabs.length || !cards.length) {
-          return;
-        }
-
-        const applyFilter = (activeFilter) => {
-          tabs.forEach((tab) => {
-            const isActive = tab.dataset.filter === activeFilter;
-            tab.classList.toggle("border-[var(--accent)]", isActive);
-            tab.classList.toggle("text-[var(--text-primary)]", isActive);
-            tab.classList.toggle("border-transparent", !isActive);
-            tab.classList.toggle("text-[var(--text-muted)]", !isActive);
+        const apply = (active) => {
+          tabs.forEach((t) => {
+            t.classList.toggle("active", t.dataset.filter === active);
           });
-
-          cards.forEach((card) => {
-            const matches =
-              activeFilter === "all" || card.dataset.characterType === activeFilter;
-
-            card.toggleAttribute("hidden", !matches);
+          entries.forEach((e) => {
+            const match = active === "all" || e.dataset.characterType === active;
+            e.toggleAttribute("hidden", !match);
           });
         };
 
-        applyFilter("all");
-
-        tabs.forEach((tab) => {
-          tab.addEventListener("click", () => applyFilter(tab.dataset.filter ?? "all"));
-        });
+        apply("all");
+        tabs.forEach((t) => t.addEventListener("click", () => apply(t.dataset.filter ?? "all")));
       };
 
-      setupCharacterFilters();
-      document.addEventListener("astro:page-load", setupCharacterFilters);
+      setupFilters();
+      document.addEventListener("astro:page-load", setupFilters);
     </script>
   )}
 </BaseLayout>

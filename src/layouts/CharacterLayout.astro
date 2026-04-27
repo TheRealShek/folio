@@ -134,4 +134,39 @@ const { title, description, name, series, rating, tags, cover, spoilers, prev, n
     <div class="divider"></div>
     <PrevNext prev={prev} next={next} />
   </section>
+
+  <!-- Reading progress bar -->
+  <div class="progress-bar" aria-hidden="true">
+    <div class="progress-bar__fill" id="progress-fill"></div>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+
+  <script is:inline>
+    const initCharacterPage = () => {
+      const fill = document.getElementById("progress-fill");
+      const btn = document.getElementById("back-to-top");
+      if (!fill || !btn) return;
+
+      const update = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) {
+          fill.style.transform = `scaleX(${Math.min(scrollTop / docHeight, 1)})`;
+        }
+        btn.classList.toggle("visible", scrollTop > window.innerHeight);
+      };
+
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+
+      btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    };
+
+    initCharacterPage();
+    document.addEventListener("astro:page-load", initCharacterPage);
+  </script>
 </BaseLayout>

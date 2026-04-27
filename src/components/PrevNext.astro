@@ -17,29 +17,29 @@ interface Props {
 const { prev, next } = Astro.props;
 ---
 
-<nav class="grid gap-6 py-8 md:grid-cols-2">
-  <div>
+<nav class="prevnext">
+  <div class="prevnext-col">
     {prev && (
       <a
         href={`/characters/${getCharacterSlug(prev)}/`}
-        class="inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
-        style="font-family: var(--font-ui);"
+        class="prevnext-link"
       >
-        <span aria-hidden="true" class="leading-none">&larr;</span>
-        <span>{getCharacterName(prev)}</span>
+        <span class="prevnext-label">Previous</span>
+        <span class="prevnext-name">&larr; {getCharacterName(prev)}</span>
       </a>
     )}
   </div>
 
-  <div class="text-right">
+  <div class="prevnext-divider"></div>
+
+  <div class="prevnext-col prevnext-col--right">
     {next && (
       <a
         href={`/characters/${getCharacterSlug(next)}/`}
-        class="inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
-        style="font-family: var(--font-ui);"
+        class="prevnext-link"
       >
-        <span>{getCharacterName(next)}</span>
-        <span aria-hidden="true" class="leading-none">&rarr;</span>
+        <span class="prevnext-label">Next</span>
+        <span class="prevnext-name">{getCharacterName(next)} &rarr;</span>
       </a>
     )}
   </div>
