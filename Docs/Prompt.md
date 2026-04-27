@@ -7,6 +7,26 @@ PERSON = [insert name]
 
 ---
 
+## FRONTMATTER
+
+Every MDX output MUST start with this YAML frontmatter block. Fill in all fields before writing the analysis body.
+
+```yaml
+---
+name: "[Full display name]"
+subtitle: "[3–7 word descriptor of their core operating principle]"
+domain: "[primary field — e.g. military, investing, psychology, physics, philosophy, technology, power, fiction]"
+era: "[birth–death years or active period — e.g. '1924–2023', '544–496 BCE', '1920s']"
+fictional: [true if character is fictional, false otherwise]
+---
+```
+
+Rules:
+- `subtitle` must be a compressed thesis, not a biography label. Bad: "Famous Physicist". Good: "Anti-Fooling System Architect"
+- `domain` is a single lowercase word. Use the most specific accurate term.
+- `era` uses en-dashes (–), not hyphens (-). Add "BCE" or "CE" suffix where ambiguous.
+- `fictional` defaults to `false`. Set `true` only for characters from fiction (TV, film, literature, games).
+
 ## STEP 1: RESEARCH
 
 Web search PERSON. Pull primary sources — their own writing, interviews, documented decisions, failures.
@@ -41,8 +61,6 @@ Bare text inside <pre> will have newlines eaten by the MDX parser.
 ## OUTPUT STRUCTURE
 
 Start the document with:
-
-# PERSON - <3–5 word descriptor>
 
 ### 1. Core Objective
 

@@ -7,6 +7,18 @@
         "name": {
           "type": "string"
         },
+        "subtitle": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "era": {
+          "type": "string"
+        },
+        "fictional": {
+          "type": "boolean"
+        },
         "series": {
           "type": "string"
         },
