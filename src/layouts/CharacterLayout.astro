@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import PrevNext from "../components/PrevNext.astro";
 import RatingBadge from "../components/RatingBadge.astro";
 import TagPill from "../components/TagPill.astro";
@@ -17,84 +16,38 @@ interface Props {
   title: string;
   description?: string;
   name: string;
+  subtitle?: string;
   series?: string;
   rating?: number;
   tags?: string[];
-  cover?: string;
   spoilers?: boolean;
   prev?: CharacterLink;
   next?: CharacterLink;
 }
 
-const { title, description, name, series, rating, tags, cover, spoilers, prev, next } = Astro.props;
+const { title, description, name, subtitle, series, rating, tags, spoilers, prev, next } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  {cover ? (
-    <section class="relative">
-      <div class="relative h-[50vh] min-h-[24rem] overflow-hidden md:h-[60vh]">
-        <Image
-          src={cover}
-          alt={name}
-          width={1600}
-          height={1200}
-          class="h-full w-full object-cover"
-        />
-        <div class="absolute inset-x-0 bottom-0 h-[40%] bg-linear-to-t from-[var(--bg-base)] to-transparent"></div>
-        <div class="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-6 pb-10 lg:px-8">
-          <a
-            href="/"
-            class="mb-6 hidden w-fit items-center gap-2 text-xs uppercase tracking-[0.14em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)] md:inline-flex"
-            style="font-family: var(--font-ui);"
-            aria-label="Back to archive"
-          >
-            <span aria-hidden="true">&larr;</span>
-            <span>Back</span>
-          </a>
-          <h1
-            class="max-w-[12ch] text-[clamp(3rem,8vw,6rem)] leading-none text-[var(--text-primary)]"
-            style="font-family: var(--font-display);"
-          >
-            {name}
-          </h1>
-          {series && (
-            <p
-              class="mt-4 text-sm uppercase tracking-[0.18em] text-[var(--text-muted)]"
-              style="font-family: var(--font-ui);"
-            >
-              {series}
-            </p>
-          )}
-        </div>
-      </div>
-    </section>
-  ) : (
-    <section class="mx-auto max-w-6xl px-6 pb-8 pt-12 lg:px-8 lg:pt-16">
-      <a
-        href="/"
-        class="mb-6 hidden w-fit items-center gap-2 text-xs uppercase tracking-[0.14em] text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)] md:inline-flex"
-        style="font-family: var(--font-ui);"
-        aria-label="Back to archive"
-      >
-        <span aria-hidden="true">&larr;</span>
-        <span>Back</span>
-      </a>
-      <h1
-        class="max-w-[12ch] text-[clamp(3rem,8vw,6rem)] leading-none text-[var(--text-primary)]"
-        style="font-family: var(--font-display);"
-      >
-        {name}
-      </h1>
-      {series && (
-        <p
-          class="mt-4 text-sm uppercase tracking-[0.18em] text-[var(--text-muted)]"
-          style="font-family: var(--font-ui);"
-        >
-          {series}
-        </p>
-      )}
-    </section>
-  )}
+  <section class="character-hero">
+    <a
+      href="/"
+      class="back-link"
+      aria-label="Back to archive"
+    >
+      <span aria-hidden="true">&larr;</span>
+      <span>Back to Archive</span>
+    </a>
+    <h1 class="character-name">
+      {name}
+    </h1>
+    {subtitle && (
+      <p class="character-subtitle">{subtitle}</p>
+    )}
+    {series && (
+      <p class="character-series">{series}</p>
+    )}
+  </section>
 
   <section class="mx-auto max-w-6xl px-6 lg:px-8">
     <div class="divider"></div>
@@ -116,12 +69,9 @@ const { title, description, name, series, rating, tags, cover, spoilers, prev, n
       </>
     )}
 
-    <div class="px-6 py-10 md:px-0 md:py-14">
+    <div class="article-container">
       {spoilers && (
-        <p
-          class="mx-auto mb-6 max-w-[680px] text-sm uppercase tracking-[0.14em] text-[var(--text-muted)]"
-          style="font-family: var(--font-ui);"
-        >
+        <p class="spoiler-warning">
           Spoiler warning: this analysis discusses major story beats.
         </p>
       )}
@@ -133,6 +83,14 @@ const { title, description, name, series, rating, tags, cover, spoilers, prev, n
 
     <div class="divider"></div>
     <PrevNext prev={prev} next={next} />
+
+    {/* Return to Archive — secondary navigation */}
+    <div class="archive-return">
+      <a href="/" class="archive-return-link">
+        <span aria-hidden="true">◈</span>
+        <span>Return to Archive</span>
+      </a>
+    </div>
   </section>
 
   <!-- Reading progress bar -->
