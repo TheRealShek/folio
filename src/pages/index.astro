@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CharacterCard from "../components/CharacterCard.astro";
 import { getCharacterName, getCharacterSlug } from "../utils/characters";
 
 const characters = await getCollection("characters");
@@ -28,6 +29,10 @@ const entries = shuffled.map((entry, i) => ({
   index: String(i + 1).padStart(2, "0"),
 }));
 
+/* Partition into Showcase (hero + emphasis) and Index (subdued) */
+const showcase = entries.filter((e) => e.tier !== "subdued");
+const index = entries.filter((e) => e.tier === "subdued");
+
 /* Filters */
 const types = [...new Set(characters.map((c) => c.data.type).filter(Boolean))].sort() as string[];
 const showFilters = types.length > 1;
@@ -52,44 +57,83 @@ const filters = ["all", ...types];
       </div>
     )}
 
-    <div class="toc-list" role="list">
-      {entries.map((item, i) => (
-        <a
-          href={`/characters/${item.slug}/`}
-          class="toc-entry"
+    {/* ── Zone 1: Bento Showcase ── */}
+    <div class="showcase-grid" role="list">
+      {showcase.map((item, i) => (
+        <div
+          class="showcase-card"
           data-tier={item.tier}
           data-character-type={item.entry.data.type ?? "all"}
           style={`--entry-index: ${i};`}
           role="listitem"
         >
-          <span class="toc-index" aria-hidden="true">{item.index}</span>
-          <div class="toc-content">
-            <span class="toc-name">{item.name}</span>
-            {(item.entry.data.series || item.entry.data.rating !== undefined) && (
-              <span class="toc-subtext">
-                {item.entry.data.series}
-                {item.entry.data.series && item.entry.data.rating !== undefined && " · "}
-                {item.entry.data.rating !== undefined && `${item.entry.data.rating}/10`}
-              </span>
-            )}
-          </div>
-        </a>
+          <CharacterCard
+            href={`/characters/${item.slug}/`}
+            name={item.name}
+            subtitle={item.entry.data.subtitle}
+            series={item.entry.data.series}
+            rating={item.entry.data.rating}
+            cover={item.entry.data.cover}
+            domain={item.entry.data.domain}
+            era={item.entry.data.era}
+            tier={item.tier}
+            emphasis={item.tier === "hero" ? "anchor" : "secondary"}
+            spanHint={item.tier === "hero" ? 2 : 1}
+          />
+        </div>
       ))}
     </div>
+
+    {/* ── Section Divider ── */}
+    {index.length > 0 && (
+      <div class="index-divider" aria-hidden="true">
+        <span>Full Index</span>
+      </div>
+    )}
+
+    {/* ── Zone 2: Master Index ── */}
+    {index.length > 0 && (
+      <div class="master-index" role="list">
+        {index.map((item, i) => (
+          <a
+            href={`/characters/${item.slug}/`}
+            class="toc-entry"
+            data-tier={item.tier}
+            data-character-type={item.entry.data.type ?? "all"}
+            style={`--entry-index: ${showcase.length + i};`}
+            role="listitem"
+          >
+            <span class="toc-index" aria-hidden="true">{item.index}</span>
+            <div class="toc-content">
+              <span class="toc-name">{item.name}</span>
+              {(item.entry.data.series || item.entry.data.rating !== undefined) && (
+                <span class="toc-subtext">
+                  {item.entry.data.series}
+                  {item.entry.data.series && item.entry.data.rating !== undefined && " · "}
+                  {item.entry.data.rating !== undefined && `${item.entry.data.rating}/10`}
+                </span>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
   </section>
 
   {showFilters && (
     <script is:inline>
       const setupFilters = () => {
         const tabs = Array.from(document.querySelectorAll(".filter-tab"));
-        const entries = Array.from(document.querySelectorAll(".toc-entry"));
-        if (!tabs.length || !entries.length) return;
+        const showcaseCards = Array.from(document.querySelectorAll(".showcase-card"));
+        const indexEntries = Array.from(document.querySelectorAll(".master-index .toc-entry"));
+        const allItems = [...showcaseCards, ...indexEntries];
+        if (!tabs.length || !allItems.length) return;
 
         const apply = (active) => {
           tabs.forEach((t) => {
             t.classList.toggle("active", t.dataset.filter === active);
           });
-          entries.forEach((e) => {
+          allItems.forEach((e) => {
             const match = active === "all" || e.dataset.characterType === active;
             e.toggleAttribute("hidden", !match);
           });

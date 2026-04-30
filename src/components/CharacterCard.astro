@@ -1,13 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import RatingBadge from "./RatingBadge.astro";
+import TagPill from "./TagPill.astro";
 
 interface Props {
   href: string;
   name: string;
+  subtitle?: string;
   series?: string;
   rating?: number;
   cover?: string;
+  domain?: string;
+  era?: string;
+  tier?: "hero" | "emphasis" | "subdued";
   slotType?: "anchor" | "secondary" | "quiet";
   emphasis?: "anchor" | "secondary" | "quiet";
   tone?: "anchored" | "balanced" | "calm" | "quiet";
@@ -17,9 +22,13 @@ interface Props {
 const {
   href,
   name,
+  subtitle,
   series,
   rating,
   cover,
+  domain,
+  era,
+  tier,
   slotType = "quiet",
   emphasis = "quiet",
   tone = "calm",
@@ -30,6 +39,8 @@ const anchorBorderStyle =
   emphasis === "anchor"
     ? "border: 1.6px solid color-mix(in srgb, var(--accent) 62%, var(--border) 38%);"
     : "";
+
+const showBadges = tier === "hero" && (domain || era);
 ---
 
 <a
@@ -65,6 +76,14 @@ const anchorBorderStyle =
     !cover && "min-h-[8.7rem]",
     spanHint === 2 ? "py-2.5 sm:py-3" : ""
   ]}>
+    {/* Hero badges: domain & era */}
+    {showBadges && (
+      <div class="card-badges">
+        {domain && <TagPill label={domain} />}
+        {era && <TagPill label={era} />}
+      </div>
+    )}
+
     <h2
       class:list={[
         "text-[var(--text-primary)] leading-tight tracking-tight",
@@ -74,6 +93,12 @@ const anchorBorderStyle =
     >
       <span style="margin: 0 auto; display: block;">{name}</span>
     </h2>
+
+    {subtitle && (
+      <p class="card-subtitle">
+        {subtitle}
+      </p>
+    )}
 
     {(series || rating !== undefined) && (
       <div class="mt-0.5 flex items-end justify-between gap-2">

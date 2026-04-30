@@ -91,6 +91,102 @@ body::before {
   margin: 0 auto;
 }
 
+/* ── Showcase Bento Grid ── */
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.showcase-card {
+  animation: toc-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--entry-index, 0) * 0.08s);
+}
+
+.showcase-card[hidden] {
+  display: none;
+}
+
+/* Hero cards span 2 columns for asymmetry */
+.showcase-card[data-tier="hero"] {
+  grid-column: span 2;
+}
+
+/* ── CharacterCard subtitle ── */
+
+.card-subtitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  text-align: center;
+  opacity: 0.78;
+}
+
+/* ── CharacterCard hero badges ── */
+
+.card-badges {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  opacity: 0.38;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .card-badges {
+  opacity: 0.62;
+}
+
+/* ── Index Section Divider ── */
+
+.index-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 3rem 0 2.5rem;
+  color: var(--text-subtle);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  user-select: none;
+}
+
+.index-divider::before,
+.index-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--divider);
+}
+
+/* ── Master Index (multi-column) ── */
+
+.master-index {
+  column-count: 3;
+  column-gap: 2.5rem;
+  column-rule: 1px solid var(--divider);
+}
+
+.master-index .toc-entry {
+  break-inside: avoid;
+  padding: 1rem 0;
+}
+
+.master-index .toc-entry .toc-name {
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
+  color: var(--text-muted);
+}
+
+.master-index .toc-entry:hover .toc-name {
+  color: var(--text-primary);
+}
+
 /* ── Filters ── */
 
 .toc-filters {
@@ -288,9 +384,32 @@ body::before {
 
 /* ── Responsive adjustments ── */
 
+@media (max-width: 1024px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .master-index {
+    column-count: 2;
+  }
+}
+
 @media (max-width: 640px) {
   .toc-section {
     padding: 1.5rem 1.25rem 6rem;
+  }
+
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-card[data-tier="hero"] {
+    grid-column: span 1;
+  }
+
+  .master-index {
+    column-count: 1;
+    column-rule: none;
   }
 
   .toc-entry { gap: 1rem; }
