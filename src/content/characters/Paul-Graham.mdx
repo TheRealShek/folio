@@ -1,0 +1,247 @@
+---
+name: "Paul Graham"
+subtitle: "Arbitrageur of Unfashionable Correct Ideas"
+domain: "technology"
+era: "1964–present"
+fictional: false
+---
+
+### 1. Core Objective
+
+PG's entire mental architecture solves one problem: **how to find correct ideas before the market prices them in.** Every framework he runs — in essays, investing, hiring, writing — is a variant of the same circuit: locate a claim that is both true and currently unfashionable, then act on the gap before it closes. He applies this to startups (fund ideas that sound wrong but aren't), to writing (publish only things readers didn't already know), and to thinking itself (build immunity to intellectual fashion). The architecture is adversarial by design. Consensus is the enemy because consensus means arbitrage is gone. He is not primarily a builder of things — he is a builder of systems for finding underpriced correctness.
+
+---
+
+### 2. Key Mental Models
+
+---
+
+**Name:** Novelty × Correctness Score
+
+**Definition:** Usefulness of any claim equals truth multiplied by novelty multiplied by importance multiplied by strength of assertion. Vagueness trades correctness for safety. Falseness trades correctness for boldness. Useful claims maximize all four simultaneously.
+
+**Mechanism:** Most communication fails by optimizing one variable while ignoring the others. Academic writing is often correct but vague — it survives peer review by saying nothing falsifiable. Demagogues are bold but false. PG treats the four components as multipliers: zero in any one collapses the score to zero. This forces a discipline where every sentence must earn its precision. Weak qualifications are not hedges — they are signals that the underlying reasoning isn't finished. The framework also creates an asymmetric filter: if you don't know something surprising and true, you have nothing worth publishing.
+
+**Example:** When he wrote "Do Things That Don't Scale," the obvious version of that insight would have been "focus on early users." That's correct but not novel — every business book says it. The version PG published argued something structurally different: that _manual, unscalable effort is not a workaround but the actual ignition mechanism_ without which no self-sustaining growth starts. Founders who read it stopped apologizing for doing things by hand and started treating it as the job. Same territory, totally different claim.
+
+**Failure Case:** The model breaks on topics where truth is genuinely contested or where novelty is weaponized as a substitute for rigor. PG occasionally publishes essays on economics or social policy where the "surprising" conclusion relies on assumptions he doesn't interrogate. The framework assumes he can correctly measure his own novelty — but he's calibrated to Silicon Valley's Overton window, not the full distribution of human knowledge.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`CLAIM USEFULNESS:
+  correct  ──────────────────────────────────►
+                                              │
+  novel    ──────────────────────────────────►  ×  ×  ×  = score
+                                              │
+  important ─────────────────────────────────►
+                                              │
+  strong   ──────────────────────────────────►
+
+  any axis = 0  →  total score = 0
+  vague = safe but ~useless
+  false = bold but ~useless`}
+</pre>
+
+---
+
+**Name:** Independent-Mindedness as Arbitrage Signal
+
+**Definition:** In domains where correct ideas must also be novel (investing, startups, research, essays), the market value of a conventional belief is already zero. Unfashionable correct ideas are underpriced. Independent-mindedness is the capacity to hold beliefs the crowd hasn't priced in yet.
+
+**Mechanism:** Consensus belief in an efficient-enough market gets reflected in prices — stock prices, competition levels, talent costs. If everyone thinks X is a good startup idea, the competitive moat is already eroded. The only actionable alpha comes from correct beliefs that are not yet widely held. Independent-mindedness is not contrarianism — contrarianism is just inverted consensus, equally worthless. The real property is _fastidiousness about truth regardless of social signal_. PG explicitly identifies three sub-components: fastidiousness about truth (calibrated belief, not binary), resistance to social pressure, and curiosity as a positive pull toward unexplored space. The mechanism works because fashion spreads faster than evidence — ideas move through social networks on liking and identity, not proof, creating systematic lag between reality and consensus.
+
+**Example:** Airbnb in 2009. The conventional belief was "strangers won't sleep in each other's homes — the market is too small and too weird." PG and the YC partners funded it not because they overcame their social anxiety about looking stupid, but because they applied a simple test: _does this solve a real problem for real people?_ Early users loved it with unusual intensity. Intense love from a small group is a stronger signal than mild interest from a large one. Every investor who passed cited social discomfort with the idea, not a logical refutation of the demand.
+
+**Failure Case:** This model selects for founders and ideas that _feel_ unconventional — which is gameable. A founder can present an idea as contrarian without it being correct. PG's pattern-matching on "sounds wrong to most people" can be fooled by ideas that are wrong _and_ unfashionable. The model also has a strong survivorship bias problem: the funded contrarian ideas that failed are not in the essay examples.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`IDEA SPACE:
+
+              CORRECT
+                 │
+  unfashionable  │  fashionable
+  ───────────────┼───────────────
+  HIGH ALPHA  ◄──│──► zero alpha (priced in)
+                 │
+           INCORRECT
+                 │
+  contrarian  ◄──│──► consensus-wrong
+  (also bad)
+
+  target: top-left quadrant
+  danger: bottom-left (unfashionable + wrong)`}
+</pre>
+
+---
+
+**Name:** Manual Ignition Before Self-Sustaining Growth
+
+**Definition:** Early-stage systems (startups, essays, code projects) do not achieve self-sustaining dynamics until a manual, high-touch, unscalable input creates enough initial momentum. The ignition phase and the growth phase require categorically different strategies.
+
+**Mechanism:** PG uses a crank-start car engine as the explicit analogy. A running engine perpetuates itself; getting it started requires a different energy source entirely. Founders apply startup logic (optimize for scale, build systems) before the engine is running, which means they keep redesigning the crank instead of turning it. The mechanism explains why posting on forums, hand-emailing early users, and doing customer support at 2am is not a temporary embarrassment — it is the only way to generate the signal density required to know what to build. You cannot build a feedback loop without feedback, and you cannot get feedback at scale before you have scale.
+
+**Example:** Stripe didn't grow because they built a better payment API and waited. The Collison brothers would personally onboard new users — sitting with founders at their laptops, walking them through integration, fixing problems on the spot. That level of manual contact generated a quality of product insight that no survey or analytics tool could produce. The API that millions use today is largely shaped by what those early manual sessions revealed.
+
+**Failure Case:** The model breaks when applied past the ignition window. Founders who internalize "do things that don't scale" as a permanent operating mode fail to transition to systems once self-sustaining growth is possible. The crank is not the engine. PG's framework gives clear guidance for the pre-PMF phase but gives ambiguous guidance on when the transition happens.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`IGNITION MODEL:
+
+  [manual effort] → [initial users] → [feedback] → [product fit]
+        ↓
+  [self-sustaining loop]
+        ↑
+  this only kicks in AFTER ignition
+
+  common mistake:
+  [build scalable system] → [wait] → [nothing happens]`}
+</pre>
+
+---
+
+**Name:** Power Law as Default Worldview
+
+**Definition:** Outcomes in domains with compounding, network effects, or leverage are not normally distributed. Most outcomes cluster near zero; a small number of outcomes dominate the entire distribution. Optimizing for average-case return is structurally wrong in these domains.
+
+**Mechanism:** In a normal distribution, variance is noise around a meaningful mean. In a power law, the mean is meaningless — it's dragged right by a handful of giant values that are qualitatively different from the rest of the distribution. This changes the decision logic: a portfolio of mediocre-but-likely bets loses to a portfolio of long-shot-but-potentially-enormous bets. It also changes what "downside" means — losing $10M on nine failed startups is fine if one returns $1B. The model explains why PG treats "this probably won't work" as irrelevant feedback on startup ideas. The question is not "what's the probability of success?" but "what's the magnitude of success if it works, and is the idea not obviously broken?"
+
+**Example:** YC's batch model only makes sense under power law assumptions. Most companies in any cohort return little or nothing. A small number — Airbnb, Stripe, Dropbox, Coinbase — return thousands of times the invested capital and dwarf the rest of the portfolio combined. If YC tried to filter for high-probability success, it would optimize away from the type of company that generates the tail. The correct filter is: eliminate obviously broken, accept everything else.
+
+**Failure Case:** Power law reasoning breaks when applied outside domains with compounding dynamics. PG occasionally imports the logic into personal life decisions ("go for the big thing") where the distributions are more normal and the cost of a long-shot is not recoverable. It also creates a blind spot: if you're inside a power law distribution, you can't know in advance which tail you're on.
+
+---
+
+**Name:** Taste as Epistemic Shortcut
+
+**Definition:** Aesthetic judgment — the felt sense that something is good or bad — functions as a compressed signal from a large implicit model of what works. In domains too complex for explicit reasoning, taste is faster and often more accurate than analysis.
+
+**Mechanism:** PG comes from a fine arts background (painting) and a CS background (Lisp). Both trained the same underlying skill: recognizing quality in artifacts that can't be fully specified. A beautiful proof and an ugly proof often differ in properties that are hard to articulate but immediately felt by someone trained to see them. Taste is not mystical — it is pattern recognition running on a very large implicit dataset. The mechanism works because explicit reasoning about complex domains requires compressing that complexity into tractable variables, which destroys information. Taste preserves more of the signal by operating on the whole artifact. This is why PG uses "does this feel right?" as a legitimate design tool.
+
+**Example:** His writing advice — "read it aloud; if a sentence catches, rewrite it" — is taste operationalized. The "catching" sensation is a low-level signal that something in the sentence doesn't match the implicit model of how good prose flows. He doesn't need to articulate _why_ the sentence is bad before fixing it. The correction often precedes the explanation.
+
+**Failure Case:** Taste is calibrated to its training distribution. PG's taste in startups is trained on a specific type of founder (technical, American, often young, often male) and a specific type of company (software, consumer, network-effect-driven). Ideas that don't match that pattern get filtered as "ugly" even when they're genuinely good. His early skepticism about Airbnb was partly a taste failure — the idea felt wrong before the evidence came in.
+
+---
+
+**Name:** Loose-then-Tight Writing as Thinking Protocol
+
+**Definition:** Effective idea-development requires two distinct, non-overlapping phases: unconstrained generation (loose), then aggressive pruning and compression (tight). Mixing the two phases kills both.
+
+**Mechanism:** Generation requires lowering the cost of being wrong — bad ideas must be allowable. Pruning requires high standards and willingness to delete. These two requirements are in direct conflict if run simultaneously: the fear of deletion inhibits generation, and the cost of deletion makes generation expensive. PG explicitly separates them: write fast and messy, then spend days in the opposite mode. The pruning phase also has a clear stopping criterion — publish when you can read the whole piece without anything catching. This is the taste signal operationalized as a shipping gate.
+
+**Example:** He describes writing an essay as iterating until sentences that "catch" like briars are gone. He's read individual sentences over 100 times. That level of iteration is only possible because the generation phase was unconstrained — there's material to iterate on. Founders who try to launch a "perfect" first product skip the loose phase and usually build something nobody wanted, because they compressed without enough generation.
+
+**Failure Case:** The model requires high volume in the loose phase to produce enough material for the tight phase to work on. If the generation phase is shallow — if you only explore one branch of the idea — the pruning phase has nothing to select from and just refines a bad seed. PG's own essays sometimes show this: he picks a thesis early and refines it aggressively without ever generating the alternatives that would challenge it.
+
+---
+
+**Name:** Few Intense Users Over Many Lukewarm Ones
+
+**Definition:** Product-market fit signal comes from the _intensity_ of user love in a small group, not the _breadth_ of mild interest in a large group. Intensity is diagnostic; breadth before intensity is noise.
+
+**Mechanism:** Mild interest from many users could mean the product is broadly mediocre or broadly correct. You can't distinguish those cases without iteration, and iteration requires knowing _what to change_. Intense love from a small group tells you exactly what the product is doing right and usually reveals a larger latent market with the same need. The mechanism also relates to the power law model: if a small group loves it intensely, that's a sign the value delivered is large, which is the input variable that determines long-tail potential. Lukewarm reception from many users produces only weak signal about what to fix.
+
+**Example:** Reddit's early strategy was to build critical mass in a few subreddits before opening. The users in those communities were intensely engaged — checking multiple times per day, contributing substantially, treating it as a real social space. That intensity signal told the team the core loop was working. Expanding to adjacent communities before that signal was clear would have produced breadth data that couldn't distinguish "this is good" from "this is fine."
+
+**Failure Case:** This model breaks when the intense small group is an outlier — when their needs are genuinely different from the larger market. Enterprise software companies get fooled by this often: a few large clients love a deeply customized product, and the founders mistake their intensity for proof of a broader market. The clients aren't early adopters of a mass product; they're the entire market.
+
+---
+
+### 3. Decision Framework
+
+**Step 1 — Correctness gate.** Can you demonstrate the claim is true? Not plausible, not analogous — true. If uncertain, label the degree of uncertainty explicitly. Do not proceed with a claim you can't defend.
+
+**Step 2 — Novelty test.** Does this claim tell the audience something they didn't already know? If the answer exists on page one of a Google search, the claim fails. If it tells them something they knew implicitly but couldn't articulate, it passes.
+
+**Step 3 — Phase identification.** Are you in the ignition phase or the growth phase? If you have fewer than 10–100 intense users, you are in ignition. Do things that don't scale. If you're in ignition and building scalable systems, stop.
+
+**Step 4 — Distribution check.** Is the outcome domain power-law or normal? If compounding, network effects, or leverage are present, assume power law. Adjust decision weights accordingly: probability matters less than magnitude at the tail.
+
+**Step 5 — Fashion filter.** Is the conclusion uncomfortable to say aloud in a room of your peers? If yes, that's a signal it might be underpriced, not that it's wrong. Run it through the correctness gate again, not the social discomfort gate.
+
+**Step 6 — Intensity signal.** If testing something (product, essay, argument), look for intense reaction in a small group, not mild reaction in a large group. Mild = noise. Intense = signal.
+
+**Step 7 — Taste check.** Does it catch? Read the whole thing. Anything that snagged attention: rewrite or delete. Ship when nothing catches.
+
+---
+
+### 4. Pattern Recognition
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`SIGNAL → MODEL ACTIVE
+
+  "everyone agrees this is a good idea"
+      → Independent-Mindedness Arbitrage (competition eroded)
+
+  "users like it but nobody loves it"
+      → Intensity Signal (discard breadth, find who loves it and why)
+
+  "we need to build the platform first"
+      → Manual Ignition (skip to unscalable user acquisition)
+
+  "is this claim correct? is it new?"
+      → Novelty × Correctness Score (both gates required)
+
+  "this feels wrong but I can't explain why"
+      → Taste as Epistemic Shortcut (trust, then find explanation)
+
+  "the idea sounds embarrassing"
+      → Fashion Filter (embarrassing ≠ wrong; re-run correctness gate)
+
+  "what's the expected value?"
+      → Power Law Check (in compounding domains, expected value is wrong metric)
+
+  "should I refine this or start over?"
+      → Loose-then-Tight (are you in generation or pruning phase? don't mix)`}
+</pre>
+
+---
+
+### 5. Leverage Points
+
+**Where these models produce disproportionate output when applied correctly:**
+
+**Fashion filter × correctness gate in series.** Ideas that survive both — uncomfortable to say AND demonstrably true — are the highest-leverage starting points in any domain. The conjunction is rare. Most uncomfortable ideas are wrong. Most correct ideas are fashionable. The intersection is underexplored by definition.
+
+**Manual ignition applied in week one, not month six.** Founders who start with unscalable user contact in week one generate orders of magnitude more product signal than those who launch publicly and wait for analytics. The second-order effect is that they build the _right_ product faster, which compresses the entire timeline to PMF.
+
+**Intensity signal as early filter.** Knowing to look for intensity (not breadth) in early users means you can make go/no-go calls with much smaller data. You need 10 people who love it, not 1000 who think it's fine. This radically reduces the cost of validation.
+
+**Taste operationalized as shipping gate.** The "catches like a brier" heuristic is precision writing advice, but it generalizes: if anything in a system produces that subtle friction response in a trained reviewer, that's a defect signal. Applied to code review, system design, or product decisions, it converts implicit quality judgment into an actionable signal.
+
+**Second-order effects when applied incorrectly:**
+
+- Power law worldview applied to personal career decisions → chronic under-investment in reliable paths, chasing lottery tickets in normal-distribution domains
+- Manual ignition internalized permanently → founder who is always hand-holding, never building systems; company never matures
+- Fashion filter without correctness gate → contrarianism; funding ideas that are wrong _and_ uncomfortable, which is worse than wrong and fashionable
+
+---
+
+### 6. Systems Application
+
+**Backend / Distributed Systems Analogy:**
+
+PG's mental models map cleanly onto distributed systems design patterns:
+
+_Novelty × Correctness_ is the same logic as **write-ahead logging with idempotency guarantees**. A log entry must be both new (not a duplicate) and correct (will produce a valid state transition). An entry that is correct but duplicated wastes resources. An entry that is novel but invalid corrupts state. Both gates are required.
+
+_Manual Ignition before scale_ is **leader election before consensus**. You don't run Raft on a single-node cluster — you manually bootstrap trust before enabling the protocol that sustains it. Skipping bootstrapping and assuming the consensus protocol will self-organize produces split-brain. The equivalent in startups is building a marketplace with no manual liquidity seeding and wondering why no transactions occur.
+
+_Intensity Signal over Breadth_ is **P99 latency over mean latency**. The mean hides the outliers that matter. Intense user love is the P99 of user satisfaction — it tells you about the tail behavior of your product, which is where the real signal lives. Optimizing for mean satisfaction (broadly liked) is the same as optimizing for mean latency: you look good on dashboards and miss the actual failure mode.
+
+_Power Law Worldview_ is **consistent hashing with virtual nodes**. A small number of nodes handle a disproportionate share of load. Designing as if load is uniform across nodes is wrong by construction. You have to design for the tail, not the mean.
+
+_Loose-then-Tight_ is exactly **write-heavy, read-light staging → compaction**. LSM trees write fast into memtables without worrying about read performance, then compact aggressively into sorted structures optimized for reads. Trying to maintain read-optimized structure during writes kills write throughput. PG's generation phase is the memtable; his pruning phase is compaction.
+
+---
+
+**Career & Decision Architecture:**
+
+PG's models function as a three-stage pipeline for high-stakes professional decisions:
+
+**Stage 1 — Signal classification.** Is this domain power-law or normal? Backend infrastructure engineering at a large company is roughly normal — variance is bounded, compounding is limited. Early-stage fintech infrastructure at a startup is power-law — equity value is either near-zero or enormous. The models that apply to each are different. Applying power-law logic in a normal-distribution role (e.g., taking a 30% pay cut for lottery-ticket equity at a late-stage company) is a category error.
+
+**Stage 2 — Fashion filter as anti-anchor.** Conventional career advice (take the big company offer, optimize for salary, avoid risky bets before 30) is priced in. The market salary for following conventional advice is the market salary. The fashion filter doesn't mean reject all conventional advice — it means run it through the correctness gate independently before accepting it because it's conventional.
+
+**Stage 3 — Intensity as go signal.** For SARWAM specifically: the right question is not "do a lot of people find this mildly useful?" but "is there a small group that would be severely disrupted if it disappeared?" If the answer is yes, the core loop is working. Everything else is scale. If the answer is no, the correctness gate failed somewhere upstream.
+
+The taste heuristic applied to engineering work: when a system design produces the "catches like a brier" sensation during review — a low-level discomfort that's hard to articulate — that's a signal worth following. The mechanism is the same as in writing. Your implicit model of good architecture is running pattern-recognition on the whole structure. The discomfort precedes the diagnosis. Trace it.

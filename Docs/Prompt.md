@@ -22,6 +22,7 @@ fictional: [true if character is fictional, false otherwise]
 ```
 
 Rules:
+
 - `subtitle` must be a compressed thesis, not a biography label. Bad: "Famous Physicist". Good: "Anti-Fooling System Architect"
 - `domain` is a single lowercase word. Use the most specific accurate term.
 - `era` uses en-dashes (–), not hyphens (-). Add "BCE" or "CE" suffix where ambiguous.
@@ -31,7 +32,7 @@ Rules:
 
 Web search PERSON. Pull primary sources — their own writing, interviews, documented decisions, failures.
 Ignore Wikipedia summaries, motivational bios, secondhand accounts.
-Extract: how they actually reasoned, what they optimized for, where they failed.
+Extract: how they actually reasoned, what they optimized for, where they failed, and they became this good in what did.
 
 ---
 
@@ -43,6 +44,7 @@ Extract: how they actually reasoned, what they optimized for, where they failed.
 - Frameworks must be operationalizable — reader can run a real decision through them
 - Mechanisms must explain WHY the model works, not just label it
 - Skip anything findable in first Google result — prioritize second-order effects and non-obvious failure cases
+- Don't use any information about me directly in the document
 - `/humanizer` applies exclusively to `Example` fields — nowhere else
 - Output as MDX document. No JSX components unless diagrams require it.
 - All diagrams use this exact tag and format — no exceptions:
@@ -78,7 +80,7 @@ For each:
 **Example:** _(apply `/humanizer` here only)_ Concrete, non-obvious case from their actual domain.
 **Failure Case:** Specific failure mode — when and why this model breaks.
 
-Include monospace diagram per model where it clarifies the mechanism.
+Include monospace diagram per model where it clarifies the mechanism and shows the essence of the model.
 
 ---
 

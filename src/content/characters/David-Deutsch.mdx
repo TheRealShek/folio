@@ -1,0 +1,296 @@
+---
+name: "David Deutsch"
+subtitle: "Error-Seeking Engine for Knowledge That Grows"
+domain: "epistemology"
+era: "1953–"
+fictional: false
+---
+
+### 1. Core Objective
+
+Deutsch's entire mental architecture solves one problem: how do you tell real knowledge from sophisticated noise? Most reasoning systems are justification machines — they collect evidence, accumulate confirmations, assign credences. Deutsch noticed this is backward. Justification can't produce new knowledge; it redistributes existing confidence across existing ideas. The actual generator of knowledge is a different loop: conjecture something that could be wrong, then apply maximum critical pressure until you can't break it. What survives isn't "proven" — it's the best current explanation. This changes everything downstream. Probability becomes irrelevant as a primary epistemic tool. Authority becomes irrelevant. Tradition becomes suspect. The whole architecture optimizes for one thing: making it harder to be wrong without knowing it.
+
+---
+
+### 2. Key Mental Models
+
+**Name:** Hard-to-Vary Explanations
+
+**Definition:** An explanation is good if its components cannot be changed without destroying its ability to account for what it explains. An explanation that absorbs any modification without losing predictive power is not an explanation — it's decoration.
+
+**Mechanism:** An easy-to-vary explanation has slack in it. You can swap out pieces and the story still "works" because it was never actually constrained by reality. A hard-to-vary explanation is load-bearing: every part connects to evidence or to other parts of the theory, so tampering with any piece causes visible failure elsewhere. This is why hard-to-vary explanations have reach beyond their original domain — the constraints that make them rigid in one area carry information about other areas. The tightness is the mechanism. Slack equals disconnection from reality.
+
+**Example:** Deutsch spent significant energy attacking Bayesianism, and this is a good place to watch the model in action. A Bayesian can accommodate almost any evidence by tweaking priors. Rains a lot in London? There's a prior for that. New data says it doesn't? Update the prior. The framework doesn't break — it bends. That's the tell. Compare this to general relativity: the geometry of spacetime isn't adjustable to fit anomalies. If Mercury's orbit comes out wrong, the theory is wrong. No knobs. That rigidity is exactly why it can predict gravitational lensing, black hole shadow geometry, and GPS clock drift — all from the same equations, no separate tuning for each. The hard-to-vary structure does the work.
+
+**Failure Case:** Deutsch can conflate "easy to vary" with "wrong." Some useful models are genuinely flexible — thermodynamics works across wildly different physical substrates precisely because it's substrate-agnostic. Not every adjustable parameter is a symptom of epistemic rot. The model also doesn't tell you _how_ to generate hard-to-vary explanations, only how to recognize them after they exist.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`EASY-TO-VARY (weak):
+  claim ──► evidence A  [fits]
+         ──► evidence B  [adjust parameter] → [fits]
+         ──► evidence C  [adjust assumption] → [fits]
+  result: always fits. Tests nothing.
+
+HARD-TO-VARY (strong):
+  claim ──► evidence A  [constrained fit]
+         ──► evidence B  [same constraint, no new knobs]
+         ──► evidence C  [breaks] → theory is WRONG
+  result: falsifiable. Learns something.`}
+</pre>
+
+---
+
+**Name:** Conjecture and Criticism (not Justification)
+
+**Definition:** Knowledge grows by proposing explanations and subjecting them to criticism, not by accumulating confirming evidence. Confirmation is not progress. Surviving criticism is.
+
+**Mechanism:** Justification-based epistemology tries to build knowledge upward from secure foundations. But there are no secure foundations — even observation is theory-laden. Deutsch follows Popper: start with a problem, guess a solution, then attack the guess. Every attack that fails to destroy the explanation is information about reality. Every attack that succeeds is also information — you learn what doesn't work and why. The mechanism that makes this productive is asymmetry: a million confirmations don't prove a theory, but one valid refutation disproves it. This asymmetry means criticism is the highest-value cognitive activity, not accumulation.
+
+**Example:** Deutsch's rejection of Bayesian epistemology is itself a demonstration of this model. He didn't survey how many scientists use Bayesianism or compute how well Bayesian agents perform empirically. He found a structural argument: Bayesian updating is inductivism with a probability score attached. Since inductivism is already broken — you can't get from observations to a general law without smuggling in assumptions — putting a number on it doesn't fix the break. One mechanism-level criticism. Theory down. That's the move.
+
+**Failure Case:** Works badly for social and political knowledge where there's no agreed mechanism for what counts as refutation. In physics, a bad measurement breaks a theory. In economics or psychology, the theory absorbs the anomaly and calls it a confound. The model assumes you can agree on what constitutes valid criticism. In many domains, that agreement doesn't exist, and Deutsch's framework offers no method for getting there.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`JUSTIFICATION MODEL:
+  obs_1 + obs_2 + ... + obs_N → confidence ↑
+  problem: N observations never reach certainty
+
+CONJECTURE-CRITICISM MODEL:
+  problem → conjecture → criticism → [survives | refuted]
+                              ↑              ↓
+                         repeat        new problem
+  result: knowledge grows by elimination, not accumulation`}
+</pre>
+
+---
+
+**Name:** Reach
+
+**Definition:** A good explanation applies correctly to cases far outside the context that produced it. This extrapolation is a direct consequence of the explanation being hard to vary, not a lucky accident.
+
+**Mechanism:** If an explanation is tightly constrained by its subject matter, those constraints encode information about the structure of reality — not just about the specific phenomenon being explained. That structural information is portable. Newton's inverse-square law was developed to explain planetary orbits. Its internal structure — the specific exponent, the specific relationship to mass — contains enough information about how gravity actually works that it correctly predicts spacecraft trajectories three centuries later, in contexts Newton never imagined. The reach is load-bearing: remove the tightness and the reach collapses. A loose theory has no reach because it has no real content.
+
+**Example:** Darwin's natural selection is the clearest case. Proposed to explain variation among finches and barnacles, the underlying logic — heritable variation, differential reproduction, selection pressure — has reach into antibiotic resistance, programming language evolution, cancer progression, and market dynamics. None of those were on Darwin's radar. The reach isn't because he was clever about applications; it's because the mechanism he found is real, and real mechanisms don't stop at finches.
+
+**Failure Case:** Reach can mislead when a theory's constraints happen to be irrelevant to the new domain. The theory looks portable but is actually just vague enough to fit anything. Neoclassical economic theory has enormous apparent "reach" — economists apply it everywhere — but some of that reach is the reach of an easy-to-vary explanation, not a hard-to-vary one. Distinguishing real reach from false reach requires already having a good explanation of the new domain, which is circular in practice.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`domain_A ──[tight constraints]──► explanation E
+                                        │
+                          internal structure of E
+                                        │
+                    ┌───────────────────┼───────────────────┐
+                    ▼                   ▼                   ▼
+                domain_B            domain_C            domain_D
+              [no retuning]       [no retuning]       [no retuning]
+
+reach = how far E applies without modification
+false reach = loose E that fits everything by saying nothing`}
+</pre>
+
+---
+
+**Name:** Constructor Theory Frame (Possible vs. Impossible)
+
+**Definition:** Instead of predicting trajectories from initial conditions, ask which physical transformations are possible and which are impossible — and why. Laws of physics are constraints on the possible, not trajectories through the actual.
+
+**Mechanism:** Standard physics asks: given state S at time T, what state exists at T+1? Constructor theory asks: what transformations can any physical system perform, in principle, with arbitrarily good accuracy? This reframe moves from trajectory-space to task-space. Why is this powerful? Because it lets you express laws that trajectory-based physics can't cleanly state. The second law of thermodynamics is awkward in trajectory physics — it's a statistical tendency, not a strict law. In constructor theory, it becomes a precise statement: no constructor can convert heat entirely into work, to arbitrary accuracy. That's a law, not a tendency. The reframe generates new laws by letting impossible things be stated exactly.
+
+**Example:** Information theory has a circularity: information is defined in terms of distinguishability, and distinguishability is defined in terms of information. Deutsch and Chiara Marletto's constructor-theoretic treatment breaks this by defining information media purely in terms of which tasks are possible on them — no circularity. From this, they derive why quantum information differs from classical: certain copying tasks are physically impossible on quantum substrates. The derivation falls out of the frame, not from ad-hoc quantum rules bolted on afterward.
+
+**Failure Case:** Constructor theory is currently more of a meta-framework than a calculator. It tells you how to think about physical laws but hasn't yet produced quantitatively novel predictions testable against standard quantum mechanics. If it stays at the level of reframing known results, it risks becoming an aesthetically satisfying reorganization rather than a genuine extension of physics — which would be, by Deutsch's own standards, not yet a good explanation.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`TRAJECTORY FRAME:
+  state(T) + laws → state(T+1) → state(T+2) → ...
+  describes: what happens
+  blind spot: what CAN happen in principle
+
+CONSTRUCTOR FRAME:
+  task ──► possible? [YES / NO]  ←── fundamental
+  constructor = any system causing the task while remaining usable
+  describes: achievable vs. forbidden transformations
+  payoff: thermodynamics and information theory become exact laws`}
+</pre>
+
+---
+
+**Name:** Static vs. Dynamic Epistemic Structures
+
+**Definition:** Any system of ideas — culture, organization, codebase, theory — is either static (surviving by suppressing criticism) or dynamic (surviving by enabling it). Static structures resist change by design. Dynamic structures encode correction mechanisms.
+
+**Mechanism:** Static memes survive by disabling the cognitive processes that would threaten them. A belief system that forbids questioning its premises protects itself from refutation not by being correct but by removing the refutation mechanism. The price is inability to adapt to novel problems — because adaptation requires generating and testing variants, which the static structure prohibits. Dynamic memes survive differently: they spread because they're useful to holders, and they replicate faithfully because rational evaluation preserves their content. The key asymmetry: static structures are stable short-term but catastrophically fragile long-term, because every new problem they can't handle is a potential fatal blow. Dynamic structures are locally unstable but globally robust — each problem solved adds to the system's generative capacity.
+
+**Example:** Cargo cults are the sharpest instance. Pacific islanders observed that planes carrying goods arrived after certain military activities — radio calls, runway lighting, coordinated movement. They preserved those rituals in meticulous detail, with bamboo headsets and mock runways, for decades. The form replicated perfectly. But the causal structure was never understood, so no variant of the ritual was possible. Static meme. No planes came. A dynamic approach would have been: try a variant, notice it fails differently, update the model. They had the surface; they never had the depth.
+
+**Failure Case:** Deutsch applies this frame too cleanly, treating Western liberal institutions as unambiguously dynamic and everything else as comparatively static. But static meme structures appear inside Western science too — textbook orthodoxy, funding incentives that punish genuinely novel conjectures, peer review cultures that reward incremental work. The frame is real; Deutsch undersells how much static-structure behavior lives inside institutions that nominally value criticism.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`STATIC STRUCTURE:
+  idea ──► disables criticism ──► survives intact
+  stability: high (short-term)
+  adaptability: zero
+  failure mode: first unsolvable problem → collapse
+
+DYNAMIC STRUCTURE:
+  idea ──► enables criticism ──► survives by being useful
+  stability: lower (short-term)
+  adaptability: high
+  failure mode: none inherent — degrades gracefully, recovers`}
+</pre>
+
+---
+
+**Name:** Fallibilism as Mechanism (not Humility)
+
+**Definition:** All knowledge is conjectural and may be wrong. This is not a disclaimer — it's the generative property. Because knowledge is always fallible, error-correction is always possible. The possibility of error is what makes improvement possible.
+
+**Mechanism:** If any piece of knowledge could be perfectly justified and thereby certified correct, you'd have reason to stop checking it. Justified knowledge is inert — it's finished. Conjectural knowledge is always open to revision, which means it always carries the possibility of improvement. Fallibilism keeps every piece of knowledge in an active state of conjecture-under-test. This has a systemic effect: institutions built on fallibilism — peer review, adversarial legal proceedings, competitive markets — outperform institutions built on authority because only the former have error-correction built into the architecture. The institutional structure is the mechanism, not the individual's humility.
+
+**Example:** Deutsch holds the many-worlds interpretation of quantum mechanics as the correct framework and argues for it hard. He has built significant theoretical work on it. But he treats it explicitly as a conjecture — the best current explanation — not settled truth. Operationally this differs from dogma even when the behavior looks similar. The difference: he specifies what would make him abandon it (a better explanation accounting for the same phenomena more parsimoniously). He has strong epistemic skin in the game, but the exit ramp is stated and genuine.
+
+**Failure Case:** Fallibilism applied uniformly creates false equivalence between well-tested conjectures and fresh ones. "All knowledge is fallible" is true but doesn't mean all knowledge is equally fallible. Deutsch knows this, but the frame is routinely misused by people invoking fallibilism to resist well-supported conclusions — "science is just a theory, everything could be wrong." The model is right; it has no built-in defense against this misuse.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`AUTHORITY MODEL:
+  claim ──► certified by [authority / consensus / experience]
+  status: closed
+  error-correction: none structural
+
+FALLIBILIST MODEL:
+  claim ──► best current conjecture
+  status: open (always under test)
+  error-correction: structural, ongoing
+
+key: fallibility enables correction — it's not just doubt`}
+</pre>
+
+---
+
+**Name:** The Principle of Optimism
+
+**Definition:** Problems are not inevitable dead ends — they are soluble, given sufficient knowledge. This is not a mood. It's a claim that no problem is inherently unsolvable unless it violates physical law.
+
+**Mechanism:** Standard pessimism treats constraints as given: resources are finite, knowledge is bounded, progress has limits. Deutsch's optimism is a different claim about the structure of reality. If a transformation is not forbidden by the laws of physics, then knowledge that would enable it exists in principle. The universe is not structured to cap human understanding at some predetermined level. Every unsolved problem is an unsolved problem, not a proof of limits. The mechanism: this framing keeps problem-solving open where pessimism closes it prematurely. The evidence for a hard ceiling is never the existence of the ceiling — only the current absence of the knowledge to get past it.
+
+**Example:** Deutsch's position on AGI is the clearest stress test. He thinks general artificial intelligence is achievable because nothing in physics forbids a physical substrate from implementing the same computational processes underlying human understanding. The obstacle isn't a fundamental wall — it's the current absence of good explanations for what understanding actually is. Whether he's right about AGI remains open. But notice the reasoning structure: he doesn't point to neuroscience papers, he points to the absence of a fundamental physical prohibition. Optimism operating as an epistemological stance, not a forecast.
+
+**Failure Case:** The optimism principle offers no timeline and no mechanism for generating the needed knowledge. "It's possible in principle" and "we'll figure it out" are different claims. Deutsch sometimes slides between them. The principle is also non-falsifiable in any finite time — if AGI doesn't arrive in a century, you can always say we don't yet have the right explanations. By his own standards — hard to vary, survives criticism — this is a weak point. The principle is real; its scope is underconstrained.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`PESSIMIST FRAME:
+  unsolved problem ──► evidence of inherent limit
+                   ──► reduce ambitions
+
+OPTIMIST FRAME (Deutsch):
+  unsolved problem ──► absence of current knowledge
+                   ──► problem is real, but solution exists in physics
+                   ──► generate better explanations
+
+hard ceiling: physical law only
+soft ceiling: current ignorance (always escapable)`}
+</pre>
+
+---
+
+### 3. Decision Framework
+
+When evaluating a claim, design, system, or theory — run these steps in order:
+
+**Step 1 — Identify what it actually explains.**
+Not what it describes, predicts, or correlates with. What _mechanism_ does it claim? If you can't state the mechanism, you have description, not explanation. Stop here until you can.
+
+**Step 2 — Test for variability.**
+Pick any component of the explanation. If you change it, does the explanation break? If it absorbs the change without consequence, the component isn't load-bearing. Map all load-bearing parts. An explanation with no load-bearing parts is not an explanation — it's a description wearing a lab coat.
+
+**Step 3 — Apply criticism, not confirmation.**
+Generate the strongest argument against the explanation — not a straw man, the best version of the attack. If the explanation survives, note what the attack failed to destroy and why that matters. If it doesn't survive, the explanation is wrong. There is no step where you look for confirming evidence first.
+
+**Step 4 — Assess reach.**
+Does the explanation apply to cases outside its original domain without modification? If yes, that's evidence it has real content. If it only fits the case it was designed for, treat it as narrow until demonstrated otherwise.
+
+**Step 5 — Classify the epistemic structure.**
+Is this explanation, or the institution producing it, static or dynamic? Does it have a built-in error-correction mechanism? If not, treat its outputs with lower trust regardless of current track record. A static structure with a good record is accumulating hidden fragility.
+
+**Step 6 — Check for physical-law violations.**
+For any claim that something is _impossible_, ask: does it violate a law of physics, or just exceed current knowledge? These are categorically different. Impossibility requires a mechanism-level argument, not an empirical track record of failure.
+
+**Step 7 — State your conjecture explicitly.**
+After running steps 1–6, form your best current explanation. State it so it can be criticized. If you can't state it publicly and precisely enough to be refuted, you haven't formed an explanation — you've formed a preference.
+
+---
+
+### 4. Pattern Recognition
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`condition → model active
+
+"That's just how it's always been done"
+    → STATIC MEME detection
+    → ask: what criticism does this structure absorb?
+
+"The data confirms our model N times"
+    → CONJECTURE-CRITICISM
+    → ask: what would falsify it?
+
+"This works here, let's apply it there"
+    → REACH test
+    → does internal structure carry? or is it just vague enough to fit?
+
+"We can't do X" (resource, compute, capability ceiling)
+    → OPTIMISM PRINCIPLE
+    → physical law or current ignorance? name the mechanism
+
+"I can adjust the parameters to fit the anomaly"
+    → HARD-TO-VARY test
+    → if adjustable without breakage, not explanatory
+
+"The expert consensus says..."
+    → FALLIBILISM
+    → consensus is conjecture at scale, not certification
+
+"We've never seen it fail"
+    → CONJECTURE-CRITICISM
+    → track record ≠ mechanism
+    → need: what would it look like if it were wrong?`}
+</pre>
+
+---
+
+### 5. Leverage Points
+
+**Error-correction infrastructure compounds.**
+The highest-leverage application of Deutsch's framework is not to individual beliefs but to the systems that produce beliefs. A team or codebase with built-in error-correction generates reliable outputs over time even when individual outputs are sometimes wrong. A team without it generates confident outputs that degrade invisibly. The downstream difference is enormous and invisible until a novel problem arrives that the system wasn't designed for — at which point the difference becomes catastrophic.
+
+**Mechanism-first evaluation cuts cargo-cult behavior early.**
+Most technical debt, failed projects, and broken architectures have the structure of cargo cults: the visible form of a working system without the causal understanding of why it worked. The leverage point is early: requiring mechanism-level explanations before committing eliminates the largest class of compounding errors. You pay a one-time cost in rigor; you avoid a long-tail cost in unexplained failures.
+
+**Reach as a design signal, before failure.**
+If a design decision has genuine reach — the same constraint that makes it work here correctly governs behavior in adjacent contexts without modification — that's a signal the decision is grounded in something real. Architecture decisions with reach are more stable than decisions that fit exactly one case. This is testable before failure arrives: try applying the decision's logic to a neighboring problem. If it fits without stretching, the decision has reach. If it requires ad-hoc adjustment every time, it doesn't.
+
+**Fallibilism as institutional design, not personal disposition.**
+Correctness-by-authority systems appear efficient. They are — until they aren't. Systems with structural criticism mechanisms (adversarial review, post-mortems with real teeth, explicit failure modes documented and visible) are slower per decision but self-correct. The second-order effect: they retain knowledge about _why_ things failed, not just that they failed. The difference between a team that improves after failures and one that repeats them is whether failure information is fed back into the conjecture-criticism loop or absorbed into silence.
+
+---
+
+### 6. Systems Application
+
+**Backend / Distributed Systems Analogy**
+
+Deutsch's epistemological architecture maps onto distributed systems design with unusual precision.
+
+_Hard-to-vary explanations_ ↔ _protocol invariants._ A consensus protocol like Raft is hard to vary: change the majority quorum definition, the leader election timeout behavior, or the log commitment condition and the safety guarantee breaks. That rigidity is the reliability. Systems that tolerate arbitrary parameter tweaking — eventual consistency with tunable knobs everywhere — have weaker formal guarantees precisely because they have more slack. Slack in a protocol equals slack in the guarantee.
+
+_Conjecture-criticism_ ↔ _chaos engineering and fault injection._ Confirming a system works under normal conditions is not evidence it works under failure. The correct epistemic move is to attack it: inject network partitions, kill nodes, corrupt state, introduce clock skew. Surviving attack is information. Surviving normal operation is not. Teams running only happy-path integration tests are running a justification process. Teams running chaos suites are running criticism.
+
+_Static vs. dynamic structures_ ↔ _monolith vs. service mesh with circuit breakers._ A static architecture handles its design load and nothing else. A dynamic architecture has explicit degradation paths, circuit breakers, bulkheads, and retry logic — correction mechanisms built into the structure. The monolith fails at unexpected failure modes with no graceful path. The dynamic system degrades and recovers. The tradeoff Deutsch's model predicts: static is simpler and faster until the first novel failure; dynamic is slower and more complex, but the novel failure is survivable.
+
+_Constructor theory frame_ ↔ _capability-based system specification._ Instead of specifying what a system will do (trajectory), specify which tasks must be possible and which must be impossible — isolation guarantees, access control, failure modes. The latter is a cleaner spec and fails loudly when violated. "The service will return results in under 200ms" is a trajectory claim. "It must be impossible for service A to access service B's data store directly" is a constructor-theoretic claim — precise, binary, testable.
+
+**Career & Decision Architecture**
+
+The static-vs-dynamic model applies directly to technical environment selection. Any role that survives by preventing you from questioning its assumptions or methodologies is a static epistemic environment. You get stable output for a period, then catastrophic brittleness when the assumptions become false — which they will, because technology moves. The signal: "we don't do it that way here" delivered as a conversation-ender with no mechanism-level justification. Static structure. The price is paid later, but it's paid.
+
+The hard-to-vary test applies to technical claims in design reviews. An explanation of an architecture that absorbs any follow-up question without consequence — "we use microservices for scalability" withstands "why not a monolith?" without a mechanism argument — is not an explanation. Requiring mechanism-level answers in both directions, when you give them and when you receive them, is the operational form of this model. It also identifies the engineers worth working with: the ones whose explanations break when you push them are building cargo cults; the ones whose explanations push back have something real.
+
+The reach test applies to skill investment. A mental model with genuine reach — applicable without modification across multiple problem domains — compounds. One with narrow fit (works for this framework in this language for this problem class) is locally optimal and globally brittle. Invest in depth that generates reach: distributed systems theory reaches from database internals to network protocols to consensus algorithms to storage systems. Framework familiarity doesn't. The test: if the knowledge stops being useful the moment the specific tool changes, it had no reach.

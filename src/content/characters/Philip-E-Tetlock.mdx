@@ -1,0 +1,304 @@
+---
+name: "Philip E. Tetlock"
+subtitle: "Probability as a Weapon Against Vague Thinking"
+domain: "psychology"
+era: "1954–present"
+fictional: false
+---
+
+### 1. Core Objective
+
+Tetlock's entire architecture solves one problem: **humans produce predictions that can't be checked**. Expert opinions, policy forecasts, geopolitical assessments — they arrive wrapped in language that is deliberately immune to scoring. "Significant risk of escalation." "Possible in the near term." These phrases do work for the speaker (social cover, preserved reputation), but no work for the listener (no actual probability, no update trigger, no accountability). Tetlock's system tears that down. Every belief must be expressed as a number, attached to a time horizon, and scored against what actually happened. The number forces honesty that words never do. The score forces calibration over time. The time horizon kills the exit ramp of "well, eventually." Without all three, you don't have a forecast — you have a performance.
+
+---
+
+### 2. Key Mental Models
+
+---
+
+**Name:** Outside-In Anchoring
+
+**Definition:** Before engaging with the specific details of a problem, establish a reference class — a set of comparable historical cases — and extract the base rate of the outcome you're predicting. That rate is your starting point. Inside-view information (the specific story about this particular situation) adjusts the anchor; it doesn't replace it.
+
+**Mechanism:** The core error in forecasting is substituting a vivid, concrete story for the relevant statistical frequency. When a forecaster hears "this situation is unique," they abandon comparative data and reason purely from the narrative in front of them. But every situation looks unique from inside it. The outside view forces the question: _what class of situations is this actually a member of?_ Once you have the reference class, base rate extraction is trivial — history provides it. The inside view then applies as evidence-based adjustment, not as replacement. This works because base rates encode millions of resolved situations; the inside view encodes one in-progress situation. You're combining the weight of evidence with the specificity of context, in the right order.
+
+**Example:** A team of engineers at a startup debating whether their product will launch on schedule. The inside view screams "we're on track, we fixed the big blockers, this sprint is going well." The outside view asks: _what percentage of similarly scoped software projects, at this stage, ship on the originally planned date?_ The honest answer is somewhere between 20% and 40%. Now adjust upward or downward based on specifics. The team probably lands at 55%, not 90%. That gap is where most plans quietly die.
+
+**Failure Case:** Reference class selection is itself a judgment call, and it's fragile. A forecaster asking "how often do standoffs like this lead to war?" gets a completely different base rate depending on whether they define the reference class as "nuclear standoffs," "cold war proxy conflicts," or "standoffs between nuclear-armed states with territorial disputes." The outside view produces false precision when the reference class is poorly specified — and there's no algorithm that tells you which class to pick. Experts game this by choosing the class that matches their prior conclusion.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`OUTSIDE-IN ANCHORING:
+
+  Step 1: Reference Class            Step 2: Base Rate           Step 3: Adjust
+  ┌────────────────────────┐         ┌──────────────┐            ┌─────────────────┐
+  │ What TYPE of event is  │ ──────► │ P(outcome)   │ ──────►   │ Inside-view     │
+  │ this a member of?      │         │ across N     │            │ evidence shifts │
+  │                        │         │ historical   │            │ anchor ± delta  │
+  │ [NOT "this event"]     │         │ cases        │            │                 │
+  └────────────────────────┘         └──────────────┘            └─────────────────┘
+
+  ERROR MODE: Start from inside view → dress it in a number → call it a forecast
+  RESULT:     Anchored to your narrative, not to frequency data`}
+</pre>
+
+---
+
+**Name:** Perpetual Beta
+
+**Definition:** Treat your current probability estimate as a software release that is always incomplete. The estimate is not a conclusion — it's the best snapshot of your model given current evidence. New evidence triggers an update; the estimate moves. The forecaster who updated most often (but not arbitrarily) consistently outperformed the forecaster who committed to a position and defended it.
+
+**Mechanism:** Belief revision has a social cost. Changing your stated position signals that your earlier position was wrong, which most people experience as reputational damage. So they don't update — or they update too little and too slowly. Perpetual beta reframes this: early positions aren't commitments, they're priors. Updating isn't error correction, it's the whole job. Tetlock's GJP data found that the single strongest predictor of superforecasting performance — stronger than raw intelligence — was the degree to which a forecaster revised their estimates in response to new information. The mechanism is Bayesian: P(H|E) = P(E|H) × P(H) / P(E). What matters is how much weight you assign to new evidence relative to your prior. Superforecasters weight evidence appropriately; most people weight their prior too heavily because the prior is socially expensive to abandon.
+
+**Example:** Someone tracking a central bank rate decision has their probability at 65% for a hold. Jobs data comes in hot. Most people note it and move on, keeping the 65%. A perpetual beta practitioner asks: how much does this specific data point shift the probability, conditional on what I already knew? They push to 72%, document why, and move on. Three weeks later, inflation numbers come in cold. They come back down to 61%. None of these movements feel dramatic in isolation. Over many predictions, this behavior compounds into dramatically better calibration than someone who anchored at 65% and waited for a blowout.
+
+**Failure Case:** Perpetual beta degrades into noise-chasing when the forecaster treats every news item as evidence-of-update rather than distinguishing signal from variance. A market moving 0.3% is not evidence of a new regime; it's within normal fluctuation. Updating on it adds noise to your model. The failure mode is high-frequency updaters who feel more calibrated because they're always moving their estimate — but their movements aren't correlated with actual new information. This looks like good process from outside; the Brier score exposes it.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`PERPETUAL BETA — UPDATE DECISION TREE:
+
+  New information arrives
+          │
+          ▼
+  Does this change P(E|H) meaningfully?
+    │                        │
+   YES                       NO (variance, noise, repetition)
+    │                        │
+    ▼                        ▼
+  Compute new posterior    Do not update
+  P(H|E) explicitly        Log it as considered-and-dismissed
+    │
+    ▼
+  Update estimate, log the delta and the reason
+  (your future self needs the audit trail)
+
+  ANTIPATTERN: Update because it feels like progress`}
+</pre>
+
+---
+
+**Name:** Dragonfly Eye Synthesis
+
+**Definition:** A dragonfly's compound eye processes many simultaneous images and fuses them into one. Applied to forecasting: actively seek views that conflict with your current model, steelman each of them, and synthesize all views into a single probability — not by averaging, but by genuinely evaluating which considerations carry more weight and why.
+
+**Mechanism:** Single-lens forecasters (hedgehogs) apply one organizing theory to every problem. It works sometimes and fails badly when the theory's assumptions break. Multi-lens forecasters (foxes) hold several models in parallel, which sounds weaker but actually reduces the variance of catastrophic error. The synthesis requirement is what distinguishes dragonfly eye from lazy eclecticism. You're not collecting views and picking one. You're weighing causal mechanisms against each other: which force is stronger in this specific case? The effort is high — Tetlock describes superforecasters running "on the one hand / on the other hand" longer than most people can tolerate before arriving at a number. The mechanism works because most prediction errors come from one silenced counterargument, not from missing the main story. The dragonfly eye forces the counterargument into the estimate.
+
+**Example:** During a tense geopolitical standoff, a hedgehog analyst concludes 85% chance of military action because "states always escalate when credibility is at stake." A dragonfly eye analyst runs the counterforces: economic interdependence, domestic political costs of conflict, back-channel signaling, historical precedents where apparent escalation reversed. They land at 55%. The hedgehog is more publishable. The dragonfly eye analyst is more accurate.
+
+**Failure Case:** Under time pressure, the synthesis step collapses. Dragonfly eye requires sustained dialectical effort that most forecasters abandon once the cognitive load spikes. The common failure is producing a 50% estimate not because evidence genuinely splits evenly, but because synthesis was hard and 50% is the defensible fence. This looks calibrated — it's neither overconfident nor under. But it contributes nothing. A 50% estimate on everything produces a Brier score of 0.5, which is exactly what a random guesser achieves.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`DRAGONFLY EYE vs SINGLE LENS:
+
+  Single Lens (Hedgehog)          Dragonfly Eye (Fox)
+  ┌───────────────────┐           ┌─────┐ ┌─────┐ ┌─────┐
+  │   Big Theory      │           │ V1  │ │ V2  │ │ V3  │
+  │   applied to      │           └──┬──┘ └──┬──┘ └──┬──┘
+  │   all inputs      │              │       │       │
+  └────────┬──────────┘              └───────┴───────┘
+           │                                 │
+           ▼                                 ▼
+     90% confidence                  Weighted synthesis
+     (wrong badly                    considering causal
+      when theory fails)             force magnitude
+                                          │
+                                          ▼
+                                   67% — still uncertain,
+                                   but the uncertainty
+                                   is earned, not lazy`}
+</pre>
+
+---
+
+**Name:** Fermi Decomposition
+
+**Definition:** Questions that appear unanswerable as posed become answerable when broken into sub-questions with estimable inputs. Decompose the target question into causally independent components, estimate each, then recombine. The final estimate inherits error from each component — but controlled, visible error rather than one unchecked intuition.
+
+**Mechanism:** Human intuition is bad at combining probabilities across steps. We anchor to the most salient factor and neglect others. Decomposition forces all factors onto the table simultaneously. It also surfaces hidden assumptions: when you break a question into parts, you discover which parts you have actual evidence for and which you were silently assuming. That epistemic accounting is the real value — not precision of the final number. The recombination step (multiplying conditional probabilities for sequential events, adding for independent paths) also catches compounding: many forecasters underestimate how quickly a chain of 0.8-probability events produces a low-probability outcome. P(A) × P(B|A) × P(C|B) = 0.8³ = 0.51. That's not 80%; it's barely a coin flip.
+
+**Example:** "Will this feature ship before the competitor does?" Feels impossible to estimate directly. Decompose: P(internal team hits deadline) × P(competitor's public signals indicate earlier ship) × P(our Q3 timeline holds given current velocity). Each component is estimable from observable data. The product of three honest estimates is more useful than one anchored intuition.
+
+**Failure Case:** Fermi decomposition produces false precision when the component estimates are correlated. If your team misses the deadline (component 1), it's often because of the same systemic problem that will cause the infrastructure team to slip (component 2). Treating them as independent and multiplying gives you a lower-than-true probability — which gives false confidence. Superforecasters who don't check for correlated failure modes produce estimates that look rigorous and are systematically wrong in exactly the scenarios where it matters most (cascading failures).
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`FERMI DECOMPOSITION:
+
+  Big Question: P(outcome)?
+        │
+        ▼
+  Break into: P(A) × P(B|A) × P(C|B) × ...
+        │
+        ├── Check: Are A, B, C independent?
+        │         If not → correlation correction
+        │
+        ├── For each component:
+        │       Have evidence? → Use it
+        │       No evidence?  → State assumption explicitly
+        │
+        ▼
+  Recombine → Final estimate inherits labeled uncertainty
+
+  KEY INSIGHT: 0.9 × 0.9 × 0.9 × 0.9 = 0.66
+               Four "likely" steps = barely probable outcome`}
+</pre>
+
+---
+
+**Name:** Calibration-Resolution Duality
+
+**Definition:** Forecast accuracy has two independent dimensions. Calibration: your stated probabilities match frequencies (events you call 70% likely happen ~70% of the time). Resolution: your estimates actually discriminate — you call some things 90%, others 20%, and you're right about which is which. You can fail at either without failing at the other. Most forecasters fail at resolution by collapsing everything toward 50%.
+
+**Mechanism:** The Brier score penalizes both overconfidence (100% on wrong event → maximum penalty) and under-resolution (50% on everything → no information gain). The scoring rule creates a specific behavioral incentive: you must be decisive where evidence warrants and restrained where it doesn't. This is harder than it looks because the social incentives run opposite. Saying "90%" is risky — you can be demonstrably wrong. Saying "55%" is safe — you can always claim you "saw both sides." Proper scoring rules remove the safety of epistemic cowardice by making fence-sitting expensive in Brier points. The mechanism is that the incentive structure finally aligns with accuracy rather than reputation management.
+
+**Example:** Two forecasters both predict elections. Forecaster A always says 55-45. Forecaster B says 80-20 on clear cases, 52-48 on genuinely uncertain ones. After 100 elections, A and B may have similar calibration scores, but B has dramatically better resolution — their 80% predictions land at 80%, meaning they identified real signal. A produced nothing except the mathematical equivalent of "I don't know" on every case. Most pundit commentary is Forecaster A behavior, structured to sound informative.
+
+**Failure Case:** Optimizing for Brier score in a tournament setting pushes forecasters toward moderate confidence levels that are statistically safe rather than epistemically honest. A forecaster who correctly identifies a 95%-likely outcome but states 75% (to hedge against the Brier penalty for overconfidence) has mis-sold their information. The calibration looks fine, but the resolution is suppressed. Tetlock's tournament format partially corrects for this — but the incentive to shade toward the middle never fully disappears under proper scoring rules that are bounded.
+
+---
+
+**Name:** Accountability Loop
+
+**Definition:** A prediction without a scoring mechanism is not a prediction. It's a social act. The accountability loop closes the circuit: commit to a specific probability, define a resolution date, score the outcome against the commitment, update your model of your own biases. Repeat. Without all four steps, the feedback that would actually improve calibration never arrives.
+
+**Mechanism:** Expert overconfidence persists not because experts are irrational, but because their environment never delivers accurate feedback. A geopolitical analyst who says "escalation is likely" either gets credit when anything bad happens (credit is ambiguous — what did "likely" mean?) or explains the non-escalation away ("I was right that the risk was high, we just got lucky"). No score, no learning signal. The accountability loop removes this by specifying the prediction precisely enough to be falsified. The mechanism works the same way that production monitoring improves software reliability: you only fix what you can observe. Vague predictions produce no observations.
+
+**Example:** Intelligence agencies pre-9/11 produced assessments that described threats in language explicitly calibrated to avoid accountability. "Bin Laden determined to strike in US" is not a probability estimate — it cannot be scored. A proper accountability loop would produce: "P(major attack on US soil within 12 months) = 0.35." That estimate can be evaluated. The 9/11 Commission could ask: was 0.35 reasonable given available evidence? Instead, they found language that looked alarming but was epistemically empty.
+
+**Failure Case:** Goodhart's Law applies directly. When Brier score becomes the metric, forecasters optimize for Brier score rather than accuracy. Specifically: avoiding high-resolution predictions on genuinely uncertain questions (because the penalty for being wrong at 90% is large), and updating very frequently in small increments (which signals calibration discipline without necessarily reflecting new information). Organizations that mandate "superforecasting process" without also measuring outcome quality end up with performers who are technically calibration-optimal but informationally useless.
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`ACCOUNTABILITY LOOP:
+
+  Commit (specific P, specific resolution date)
+          │
+          ▼
+  Track — update as evidence arrives (log deltas)
+          │
+          ▼
+  Resolve — binary: did it happen or not?
+          │
+          ▼
+  Score — Brier: (P_forecast - outcome)²
+          │
+          ▼
+  Audit — where was calibration off? Resolution off?
+          │
+          └──► Update mental model → next forecast
+
+  WITHOUT THIS LOOP:
+  "I thought there was a real risk" covers all outcomes.
+  Zero learning signal. Permanently miscalibrated.`}
+</pre>
+
+---
+
+**Name:** Epistemic Courage vs Cowardice
+
+**Definition:** Epistemic cowardice is the deliberate use of vague language to protect reputation at the cost of informational content. Epistemic courage is expressing a precise probability when you have genuine evidence for it — even when being wrong at that precision level is costly. Tetlock's data shows that cowardice is the dominant behavior in expert commentary, and it's rationally optimal given the incentive environment experts face.
+
+**Mechanism:** The incentive structure for public experts rewards being wrong-but-vague over being wrong-but-precise. If you say "there is significant risk" and nothing happens, you can claim misinterpretation. If you say "65% chance" and it doesn't happen, you were wrong by a falsifiable standard. The reputational penalty for the second is larger, so experts learn to hedge. This isn't incompetence — it's rational response to broken incentives. The mechanism by which forecasting tournaments fix this is simple: vagueness cannot be scored. You must commit to a number to play. The tournament is a cowardice-prevention mechanism, not a skill-acquisition mechanism. Many of the gains from GJP training come from removing hedging rather than adding skill.
+
+**Example:** During COVID, most expert forecasters gave range estimates so wide as to be unfalsifiable. "Anywhere from 100,000 to 2 million deaths" describes almost every possible world. Superforecasters in active GJP tournaments were producing estimates like "P(US deaths exceed 500K by end of 2021) = 0.41" — specific enough to be wrong, and therefore specific enough to be right in a meaningful sense. The latter group updated weekly; the first group published once and never revisited.
+
+**Failure Case:** Epistemic courage breaks down when the cost of being precisely wrong is existential rather than reputational. A doctor who says "I give you a 40% chance of surviving this surgery" and the patient dies faces a different accountability structure than a GJP forecaster. Tetlock's framework assumes that being precisely wrong is recoverable — reputation adjusts, the forecaster updates and continues. In domains where a single precise wrong prediction can terminate a career (certain medical, legal, policy contexts), cowardice is structurally optimal and the accountability loop cannot be easily transplanted without changing the surrounding incentive system.
+
+---
+
+### 3. Decision Framework
+
+**Step 1: Clarify the question.**
+State the prediction in falsifiable form: what event, what threshold, what time window, what evidence will resolve it. If you cannot specify resolution criteria, stop — the question isn't defined.
+
+**Step 2: Identify the reference class.**
+Before reading anything specific to this case, ask: what category of events does this belong to? Find historical base rate for that category. Write down the number. This is your anchor.
+
+**Step 3: Decompose.**
+Break the question into 2-5 sub-questions with estimable inputs. Check whether the components are independent or correlated. For correlated components, compute conditional probabilities explicitly — P(B|A), not P(B).
+
+**Step 4: Collect inside-view evidence.**
+Now engage with the specifics. For each piece of evidence: (a) which direction does it push the estimate? (b) how much? Resist adjusting by feel — commit to a delta. Typical adjustment from base rate is smaller than intuition suggests.
+
+**Step 5: Dragonfly synthesis.**
+Identify the strongest argument against your current estimate. Steelman it. Does it change your number? If you cannot steelman the opposing view, you have not thought about it seriously enough.
+
+**Step 6: Express the estimate with precision.**
+State a probability to the nearest 5%. Not a range. Ranges are cowardice formatted as caution. Log the estimate, the date, and the reason.
+
+**Step 7: Set an update trigger.**
+What would have to happen for you to move this estimate by more than 10 percentage points? Define it before it happens. This prevents post-hoc rationalization of why you updated (or didn't).
+
+**Step 8: Score it.**
+When the event resolves, compute your Brier score. Track calibration (are your 70% estimates landing at ~70%?) and resolution (are your extreme estimates correct more than moderate ones?) separately. They fail in different directions.
+
+---
+
+### 4. Pattern Recognition
+
+<pre style="background: transparent; border: none; overflow-x: auto; font-family: monospace; color: var(--text-muted); font-size: 0.85em; white-space: pre-wrap;">
+  {`CONDITION → ACTIVE MODEL
+
+  "This situation is totally unique"
+      → Outside-In Anchoring (the uniqueness claim kills base rate)
+
+  New information just arrived
+      → Perpetual Beta check (signal vs noise before updating)
+
+  You feel confident but can't find the counterargument
+      → Dragonfly Eye (missing forced synthesis)
+
+  Estimate keeps landing near 50% across many different questions
+      → Calibration-Resolution Duality (resolution failure / fence-sitting)
+
+  Question feels impossible to answer as stated
+      → Fermi Decomposition (unpack into estimable parts)
+
+  Expert using phrases: "significant risk", "possible", "concerning"
+      → Epistemic Cowardice detection (no scoring content present)
+
+  Prediction was made but never revisited
+      → Accountability Loop missing
+
+  Your own past forecast is now uncomfortable to look at
+      → Perpetual Beta blocked by loss aversion (update anyway)`}
+</pre>
+
+---
+
+### 5. Leverage Points
+
+**Precision forces honesty.** The highest-leverage intervention in any forecasting or planning process is requiring numerical probabilities with resolution dates. Language permits unlimited ambiguity. A number does not. This change — purely mechanical, no skill upgrade required — compresses the range of defensible positions and forces revision when reality diverges. The downstream effects: decisions made on precise estimates are more testable, and teams can trace where their model broke.
+
+**Scoring changes behavior more than training does.** GJP data showed that a 60-minute tutorial on probability improved forecasting accuracy by ~10%. But scoring — introducing Brier scores with visible rankings — produced behavioral changes that dwarf training effects. The mechanism is incentive alignment, not knowledge transfer. When applied incorrectly (scoring without calibration feedback, or scoring individuals in ways that create political risk), the second-order effect is Goodhart degradation: forecasters optimize the score instead of the accuracy.
+
+**Belief-updating cadence is the meta-skill.** The compounding advantage of perpetual beta runs forward across many predictions. A forecaster who updates correctly on 1000 predictions over two years develops an empirical model of their own biases — specific biases, not generic ones. "I systematically underestimate political friction" is more useful than "I should be more humble." Applied correctly: create forcing functions for update review (weekly, triggered by defined events) rather than relying on motivation.
+
+**Accountability without resolution criteria is theater.** "We'll hold people accountable" means nothing if outcome resolution isn't defined. The second-order effect of fake accountability: forecasters learn that the accountability is decorative and revert to cowardice. Worse, teams start mimicking the process (numerical estimates, logs, reviews) while leaving resolution criteria vague enough to escape judgment. The leverage point is designing the resolution criteria before the prediction is made — after the fact is too late.
+
+---
+
+### 6. Systems Application
+
+#### Backend / Distributed Systems Analogy
+
+Tetlock's models map cleanly onto distributed systems architecture because both fields deal with the same core problem: reasoning about probabilistic behavior under incomplete information, then making commitments that must be evaluated later.
+
+**Outside-In Anchoring → SLA design from historical SLOs.** Before setting latency targets for a new service, you establish a reference class (similar services at similar scale) and extract the base rate of achieved p99 latency. You don't start from what the team hopes to achieve — you start from what comparable systems actually delivered. Inside-view adjustments (different data store, different traffic pattern) modify the anchor.
+
+**Perpetual Beta → Adaptive circuit breakers.** A fixed circuit breaker threshold treats the world as static. A perpetual-beta circuit breaker updates its error rate model continuously, weighting recent windows more heavily but not ignoring historical patterns. The analogy is exact: the breaker holds a probability estimate of "is this service healthy?" and updates it with each observation, tripping when the posterior crosses a threshold.
+
+**Dragonfly Eye → Multi-signal health checks.** A single-metric health check is a hedgehog. Latency up → unhealthy. Dragonfly eye: synthesize latency, error rate, queue depth, downstream dependency health, and deploy status into a single health signal. No single metric drives the decision; the synthesis does. The failure mode mirrors exactly — under load, the synthesis collapses to the most alarming single metric, which is the distributed systems equivalent of a forecaster abandoning multi-view analysis under deadline pressure.
+
+**Accountability Loop → Structured incident review.** An incident review without a recorded prediction ("we expected this system to handle 10K RPS") is a postmortem that can only produce hindsight bias. When teams record pre-incident capacity estimates as falsifiable claims, postmortems can evaluate whether the model was correct or the incident was a model failure. This is the Tetlock loop: commit → observe → score → update model.
+
+**Calibration-Resolution Duality → Alert signal quality.** An alert that fires on every anomaly has poor resolution (fires on noise, true positive rate low). An alert calibrated to fire only on 99%+ confidence events has poor resolution at the other end (misses real problems). Good alerting requires both: the alert fires at calibrated confidence levels that actually discriminate signals from noise. This is directly the calibration-resolution tradeoff — a p99 latency alert tuned to 3× baseline noise will, by construction, fire ~1% of the time on non-incidents.
+
+---
+
+#### Career & Decision Architecture
+
+Tetlock's system applied to career decisions produces one primary requirement: decisions must be falsifiable. "I'm joining this company because I think it will grow fast" is an epistemic cowardice statement. It cannot be scored. "I'm joining this company because I estimate 65% probability of Series B in 18 months, based on current ARR trajectory and comparable raises in this segment" can be scored — and if wrong, produces a useful model update.
+
+**Decompose high-stakes choices.** A career pivot is a chain of conditional probabilities. P(I get the role) × P(the company survives 2 years) × P(I learn what I came to learn given the role) × P(that learning is valued by next employer). Written out, the product often looks different from the intuitive estimate. The chain reveals which link is weakest and should receive the most due diligence.
+
+**Build your personal calibration dataset.** Track predictions you make about your own work — "this feature will take 2 weeks," "this will get approved in the first review," "this hire will work out." Score them. Most engineers are systematically overconfident on timeline estimates and underconfident on their own technical judgment calls. Knowing which direction your errors run lets you apply a correction at estimate time rather than discovering it in the postmortem.
+
+**Detect when the incentive structure rewards cowardice.** Some organizations punish precise predictions that turn out wrong more than they punish vague predictions that produce no information. In those environments, epistemic cowardice is the rational response, and Tetlock's framework predicts you will converge toward it regardless of training. The upstream fix is incentive redesign; the downstream fix is to notice the pattern and be explicit with yourself about what you're doing and why — rather than mistaking cowardice for calibration.
